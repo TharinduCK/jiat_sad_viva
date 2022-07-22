@@ -184,7 +184,7 @@ public class Item_stock_selector extends javax.swing.JDialog {
             v.add(product_name);
             v.add(hr.set_qty);
             v.add(selling_price.toString());
-            v.add(val.toString());
+            v.add(df.format(val));
 
             hr.product_id.add(product_id);
             hr.stock_id.add(stock_id);
