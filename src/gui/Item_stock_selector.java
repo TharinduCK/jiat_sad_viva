@@ -195,6 +195,7 @@ public class Item_stock_selector extends javax.swing.JDialog {
             hr.mfd.add(mfd);
             hr.exd.add(exd);
             hr.selling_price.add(Double.parseDouble(selling_price));
+            hr.discount.add(0);
 
             dtm.addRow(v);
 
