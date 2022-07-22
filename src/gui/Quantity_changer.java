@@ -5,6 +5,7 @@
  */
 package gui;
 
+import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
@@ -22,16 +23,6 @@ public class Quantity_changer extends javax.swing.JDialog {
         super(parent, modal);
         this.hr = (Home) parent;
         initComponents();
-    }
-
-    private void totalcal() {
-        for (int i = 0; i < hr.jTable1.getRowCount(); i++) {
-            Double amount = Double.parseDouble(hr.jTable1.getValueAt(i, 3).toString());
-
-            subtotal += amount;
-
-            hr.jLabel6.setText(df.format(subtotal).toString());
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -123,7 +114,8 @@ public class Quantity_changer extends javax.swing.JDialog {
         hr.jTable1.setValueAt(df.format(out), hr.productrow, hr.jTable1.getColumn("Amount").getModelIndex());
 
         hr.quantity.set(hr.productrow, jTextField1.getText());
-        totalcal();
+        Item_stock_selector iss = new Item_stock_selector(hr, true);
+        iss.totalcal();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -131,31 +123,7 @@ public class Quantity_changer extends javax.swing.JDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Quantity_changer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Quantity_changer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Quantity_changer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Quantity_changer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
+        FlatLightFlatIJTheme.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Quantity_changer dialog = new Quantity_changer(new javax.swing.JFrame(), true);

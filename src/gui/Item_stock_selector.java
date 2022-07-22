@@ -5,6 +5,7 @@
  */
 package gui;
 
+import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class Item_stock_selector extends javax.swing.JDialog {
     public String mfd;
     public String exd;
     public double subtotal;
+    public double total_discount;
 
     public Item_stock_selector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -75,13 +77,23 @@ public class Item_stock_selector extends javax.swing.JDialog {
 
     }
 
-    private void totalcal() {
+    public void totalcal() {
         for (int i = 0; i < hr.jTable1.getRowCount(); i++) {
             Double amount = Double.parseDouble(hr.jTable1.getValueAt(i, 3).toString());
 
             subtotal += amount;
 
             hr.jLabel6.setText(df.format(subtotal).toString());
+
+            double dis = Double.parseDouble(hr.selling_price.get(i).toString()) / 100 * Double.parseDouble(hr.discount.get(i).toString());
+
+            total_discount += dis;
+
+            hr.jLabel7.setText(df.format(total_discount));
+
+            double total = subtotal - total_discount;
+
+            hr.jLabel8.setText(df.format(total));
         }
     }
 
@@ -213,30 +225,7 @@ public class Item_stock_selector extends javax.swing.JDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Item_stock_selector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Item_stock_selector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Item_stock_selector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Item_stock_selector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
+        FlatLightFlatIJTheme.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Item_stock_selector dialog = new Item_stock_selector(new javax.swing.JFrame(), true);
