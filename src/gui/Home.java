@@ -224,9 +224,6 @@ public class Home extends javax.swing.JFrame {
 
                 jButton16.setText(String.valueOf(jb));
 
-                Payment_popup pp = new Payment_popup(this, true);
-                pp.setVisible(false);
-
                 JOptionPane.showMessageDialog(this, "New Invoice created", "Success", JOptionPane.INFORMATION_MESSAGE);
 
             } catch (Exception e) {
@@ -513,6 +510,11 @@ public class Home extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_plus_35px.png"))); // NOI18N
         jButton6.setText("New Sale");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_ticket_35px.png"))); // NOI18N
@@ -956,11 +958,33 @@ public class Home extends javax.swing.JFrame {
         dtm.setRowCount(0);
 
         jTextField1.setText("");
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        product_id.removeAllElements();
+        stock_id.removeAllElements();
+        product_name.removeAllElements();
+        category.removeAllElements();
+        brand.removeAllElements();
+        quantity.removeAllElements();
+        mfd.removeAllElements();
+        exd.removeAllElements();
+        selling_price.removeAllElements();
+        discount.removeAllElements();
+
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setRowCount(0);
+
+        jTextField1.setText("");
 
         jButton16.setText("Count");
 
+        pay_id = 0;
 
-    }//GEN-LAST:event_jButton17ActionPerformed
+        jButton8.setBackground(new Color(203, 229, 255));
+        jButton9.setBackground(new Color(203, 229, 255));
+        jButton10.setBackground(new Color(203, 229, 255));
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

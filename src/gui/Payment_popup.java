@@ -216,6 +216,8 @@ public class Payment_popup extends javax.swing.JDialog {
             hr.payment_type = jLabel27.getText();
             hr.balance = balance;
             hr.payment();
+
+            this.dispose();
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
