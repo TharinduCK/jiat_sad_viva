@@ -3269,19 +3269,19 @@
                       <Component id="jScrollPane8" pref="0" max="32767" attributes="0"/>
                       <Component id="jButton40" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel91" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel91" pref="164" max="32767" attributes="0"/>
+                              <Component id="jLabel90" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jTextField22" pref="169" max="32767" attributes="0"/>
                               <Component id="jTextField21" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel92" min="-2" pref="122" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel92" min="-2" pref="146" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3310,23 +3310,42 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel90">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Open Sans Semibold" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Company Name"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel91">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Open Sans Semibold" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Company Contact Number"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField21">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Open Sans" size="12" style="0"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField22">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Open Sans" size="12" style="0"/>
+                    </Property>
+                  </Properties>
                   <Events>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField22KeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton40">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Open Sans" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Add Company"/>
                   </Properties>
                   <Events>
@@ -3335,6 +3354,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel92">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Open Sans Semibold" size="13" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Company Registration"/>
                   </Properties>
                 </Component>
@@ -3383,14 +3405,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton41" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel95" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jLabel96" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel94" alignment="0" pref="83" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel95" pref="99" max="32767" attributes="0"/>
+                                  <Component id="jLabel96" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel94" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTextField25" max="32767" attributes="0"/>
                                   <Component id="jTextField24" max="32767" attributes="0"/>
@@ -3437,35 +3457,65 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel93">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="13" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Supplier"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel94">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Supplier Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField23">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField24">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField24KeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel95">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Contact Number"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField25">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel96">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton41">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Create Supplier Account"/>
               </Properties>
               <Events>
@@ -3564,6 +3614,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton42">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Select Branch"/>
               </Properties>
               <Events>
@@ -3572,26 +3625,41 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel97">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Branch Id"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel98">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Branch Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel99">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Branch Address"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel100">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="13" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Branch"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel101">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="None"/>
               </Properties>
               <AuxValues>
@@ -3600,6 +3668,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel102">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="None"/>
               </Properties>
               <AuxValues>
@@ -3608,6 +3679,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel103">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="None"/>
               </Properties>
               <AuxValues>
@@ -3616,11 +3690,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel104">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Company Id"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel105">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="None"/>
               </Properties>
               <AuxValues>
@@ -3629,11 +3709,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel106">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Company"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel107">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="None"/>
               </Properties>
               <AuxValues>
@@ -3871,8 +3957,8 @@
                       <Component id="jButton6" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton9" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace pref="65" max="32767" attributes="0"/>
-                      <Component id="jButton38" min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                      <Component id="jButton38" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

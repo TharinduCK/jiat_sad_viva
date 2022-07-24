@@ -586,6 +586,11 @@ public class Home extends javax.swing.JFrame {
         jButton13.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_refund_35px.png"))); // NOI18N
         jButton13.setText("Refund");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_neo_cryptocurrency_150px.png"))); // NOI18N
@@ -1007,6 +1012,11 @@ public class Home extends javax.swing.JFrame {
         jButton9.setBackground(new Color(203, 229, 255));
         jButton10.setBackground(new Color(203, 229, 255));
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        Refund_panel rp = new Refund_panel(this, true);
+        rp.setVisible(true);
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments

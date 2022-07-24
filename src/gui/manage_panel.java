@@ -2779,16 +2779,22 @@ public class manage_panel extends javax.swing.JFrame {
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel90.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel90.setText("Company Name");
 
+        jLabel91.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel91.setText("Company Contact Number");
 
+        jTextField21.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+
+        jTextField22.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField22.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField22KeyTyped(evt);
             }
         });
 
+        jButton40.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jButton40.setText("Add Company");
         jButton40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2796,6 +2802,7 @@ public class manage_panel extends javax.swing.JFrame {
             }
         });
 
+        jLabel92.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jLabel92.setText("Company Registration");
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
@@ -2828,16 +2835,16 @@ public class manage_panel extends javax.swing.JFrame {
             .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jButton40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel90)
-                    .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel91, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(jLabel90, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField22, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                     .addComponent(jTextField21)))
             .addGroup(jPanel31Layout.createSequentialGroup()
-                .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2876,20 +2883,30 @@ public class manage_panel extends javax.swing.JFrame {
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel93.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jLabel93.setText("Supplier");
 
+        jLabel94.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel94.setText("Supplier Name");
 
+        jTextField23.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+
+        jTextField24.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField24.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField24KeyTyped(evt);
             }
         });
 
+        jLabel95.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel95.setText("Contact Number");
 
+        jTextField25.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+
+        jLabel96.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel96.setText("Email");
 
+        jButton41.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jButton41.setText("Create Supplier Account");
         jButton41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2906,12 +2923,11 @@ public class manage_panel extends javax.swing.JFrame {
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel96, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel94, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
-                        .addGap(12, 12, 12)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel95, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(jLabel96, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel94, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField25)
                             .addComponent(jTextField24)
@@ -2945,6 +2961,7 @@ public class manage_panel extends javax.swing.JFrame {
 
         jPanel33.setBackground(new java.awt.Color(255, 255, 255));
 
+        jButton42.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jButton42.setText("Select Branch");
         jButton42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2952,26 +2969,37 @@ public class manage_panel extends javax.swing.JFrame {
             }
         });
 
+        jLabel97.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel97.setText("Branch Id");
 
+        jLabel98.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel98.setText("Branch Name");
 
+        jLabel99.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel99.setText("Branch Address");
 
+        jLabel100.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jLabel100.setText("Branch");
 
+        jLabel101.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel101.setText("None");
 
+        jLabel102.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel102.setText("None");
 
+        jLabel103.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel103.setText("None");
 
+        jLabel104.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel104.setText("Company Id");
 
+        jLabel105.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel105.setText("None");
 
+        jLabel106.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jLabel106.setText("Company");
 
+        jLabel107.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel107.setText("None");
 
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
@@ -3268,8 +3296,8 @@ public class manage_panel extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
