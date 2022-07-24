@@ -179,44 +179,51 @@ public class Item_stock_selector extends javax.swing.JDialog {
 
         // Set to invoice
         if (evt.getClickCount() == 2) {
-            stock_id = jTable1.getValueAt(selectedRow, 0).toString();
-            product_id = jTable1.getValueAt(selectedRow, 1).toString();
-            product_name = jTable1.getValueAt(selectedRow, 4).toString();
-            category = jTable1.getValueAt(selectedRow, 3).toString();
-            brand = jTable1.getValueAt(selectedRow, 2).toString();
-            mfd = jTable1.getValueAt(selectedRow, 7).toString();
-            selling_price = df.format(Double.parseDouble((String) jTable1.getValueAt(selectedRow, 6)));
-            exd = jTable1.getValueAt(selectedRow, 8).toString();
+            int qt = Integer.parseInt(jTable1.getValueAt(selectedRow, 5).toString());
 
-            DefaultTableModel dtm = (DefaultTableModel) hr.jTable1.getModel();
+            if (qt <= 0) {
+                JOptionPane.showMessageDialog(this, "This item is out of stock", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                stock_id = jTable1.getValueAt(selectedRow, 0).toString();
+                product_id = jTable1.getValueAt(selectedRow, 1).toString();
+                product_name = jTable1.getValueAt(selectedRow, 4).toString();
+                category = jTable1.getValueAt(selectedRow, 3).toString();
+                brand = jTable1.getValueAt(selectedRow, 2).toString();
+                mfd = jTable1.getValueAt(selectedRow, 7).toString();
+                selling_price = df.format(Double.parseDouble((String) jTable1.getValueAt(selectedRow, 6)));
+                exd = jTable1.getValueAt(selectedRow, 8).toString();
 
-            Double val = hr.set_qty * Double.parseDouble(selling_price);
+                DefaultTableModel dtm = (DefaultTableModel) hr.jTable1.getModel();
 
-            Vector v = new Vector();
-            v.add(product_name);
-            v.add(hr.set_qty);
-            v.add(selling_price.toString());
-            v.add(df.format(val));
+                Double val = hr.set_qty * Double.parseDouble(selling_price);
 
-            hr.product_id.add(product_id);
-            hr.stock_id.add(stock_id);
-            hr.product_name.add(product_name);
-            hr.category.add(category);
-            hr.brand.add(brand);
-            hr.quantity.add(1);
-            hr.mfd.add(mfd);
-            hr.exd.add(exd);
-            hr.selling_price.add(Double.parseDouble(selling_price));
-            hr.discount.add(0);
+                Vector v = new Vector();
+                v.add(product_name);
+                v.add(hr.set_qty);
+                v.add(selling_price.toString());
+                v.add(df.format(val));
 
-            dtm.addRow(v);
+                hr.product_id.add(product_id);
+                hr.stock_id.add(stock_id);
+                hr.product_name.add(product_name);
+                hr.category.add(category);
+                hr.brand.add(brand);
+                hr.quantity.add(1);
+                hr.mfd.add(mfd);
+                hr.exd.add(exd);
+                hr.selling_price.add(Double.parseDouble(selling_price));
+                hr.discount.add(0);
 
-            hr.jTable1.setModel(dtm);
+                dtm.addRow(v);
 
-            hr.jTextField1.setText("");
+                hr.jTable1.setModel(dtm);
 
-            totalcal();
-            this.dispose();
+                hr.jTextField1.setText("");
+
+                totalcal();
+                this.dispose();
+            }
+
         }
 
     }//GEN-LAST:event_jTable1MouseClicked
