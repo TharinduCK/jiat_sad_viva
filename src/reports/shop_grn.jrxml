@@ -45,7 +45,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Ebrima" size="21" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Neox POS System]]></text>
+				<text><![CDATA[Neox Mart]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="271" y="60" width="260" height="20" uuid="0a5d31da-5c64-4367-983d-e2899c57ba82"/>

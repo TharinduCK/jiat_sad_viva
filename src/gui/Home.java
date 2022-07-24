@@ -14,6 +14,7 @@ import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
@@ -24,7 +25,14 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 import model.MySQL;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRTableModelDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -215,9 +223,6 @@ public class Home extends javax.swing.JFrame {
 //                    MySQL.iud("UPDATE `grn_item` SET `quantity` = '" + qty + "' WHERE `stock_id` = '" + sid + "'");
                 }
 
-                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-                dtm.setRowCount(0);
-
                 count += 1;
 
                 int jb = count;
@@ -225,6 +230,23 @@ public class Home extends javax.swing.JFrame {
                 jButton16.setText(String.valueOf(jb));
 
                 JOptionPane.showMessageDialog(this, "New Invoice created", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                String filePath = "src//reports//invoice_generate.jrxml";
+                JasperReport jr = JasperCompileManager.compileReport(filePath);
+
+                HashMap parameters = new HashMap();
+
+                parameters.put("Parameter1", jLabel6.getText());
+                parameters.put("Parameter2", jLabel7.getText());
+                parameters.put("Parameter3", jLabel8.getText());
+
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                JRTableModelDataSource dataSource = new JRTableModelDataSource(dtm);
+
+                JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
+                JasperViewer.viewReport(jp, false);
+
+                dtm.setRowCount(0);
 
             } catch (Exception e) {
                 e.printStackTrace();
