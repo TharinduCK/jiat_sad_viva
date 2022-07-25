@@ -4,6 +4,8 @@
 	<parameter name="Parameter1" class="java.lang.String"/>
 	<parameter name="Parameter2" class="java.lang.String"/>
 	<parameter name="Parameter3" class="java.lang.String"/>
+	<parameter name="Parameter4" class="java.lang.String"/>
+	<parameter name="Parameter5" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -60,7 +62,36 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="120" height="30" uuid="b9bacfae-b578-4955-a20a-fbff0742d8a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Unique ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="1" width="120" height="30" uuid="09f985f1-f742-4ab5-a848-a9e7f6446a10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Parameter4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="1" width="100" height="30" uuid="af448b96-45ac-4f56-8766-b463219c8782"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="1" width="154" height="30" uuid="1346d458-6fb8-424e-9972-ac116104e710"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Parameter5}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
@@ -68,6 +99,9 @@
 				<reportElement x="0" y="0" width="200" height="30" uuid="2e19a327-f2de-4eff-8811-a2be36bd6e5a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="47c7189a-4519-4dfd-8a8a-16c53620d5bf"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.75"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="14" isBold="true"/>
 				</textElement>
@@ -77,6 +111,9 @@
 				<reportElement x="200" y="0" width="100" height="30" uuid="e59d747e-4152-4349-b363-4cc13b606caa">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="670bc336-58b2-46dc-bbdc-2acae18e0294"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.75"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="14" isBold="true"/>
 				</textElement>
@@ -86,6 +123,9 @@
 				<reportElement x="300" y="0" width="120" height="30" uuid="6132d3a6-1eb0-40c9-af4a-ff6c812a418c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f08940c8-eb6f-4127-9f2d-7dee6396858b"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.75"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="14" isBold="true"/>
 				</textElement>
@@ -95,6 +135,9 @@
 				<reportElement x="420" y="0" width="134" height="30" uuid="d744359c-ae86-4630-bf99-15dd2f242156">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b74e5e56-5385-4fd5-b267-187dc9b1601d"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.75"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="14" isBold="true"/>
 				</textElement>
@@ -108,6 +151,9 @@
 				<reportElement x="0" y="0" width="200" height="30" uuid="46c358d5-3e68-4ea9-a736-007477daa74e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="47c7189a-4519-4dfd-8a8a-16c53620d5bf"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#7A7A7A"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="12" isBold="false"/>
 				</textElement>
@@ -117,6 +163,9 @@
 				<reportElement x="200" y="0" width="100" height="30" uuid="397b8b01-c17b-4741-9199-2b1caef25905">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="670bc336-58b2-46dc-bbdc-2acae18e0294"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#7A7A7A"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="12" isBold="false"/>
 				</textElement>
@@ -126,6 +175,9 @@
 				<reportElement x="300" y="0" width="120" height="30" uuid="c8cf7e67-978e-431f-b4de-4a166052399b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f08940c8-eb6f-4127-9f2d-7dee6396858b"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#7A7A7A"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="12" isBold="false"/>
 				</textElement>
@@ -135,6 +187,9 @@
 				<reportElement x="420" y="0" width="134" height="30" uuid="c9e9d414-bc1d-4579-a9ba-f16fffad002c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b74e5e56-5385-4fd5-b267-187dc9b1601d"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#7A7A7A"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri Light" size="12" isBold="false"/>
 				</textElement>

@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -181,7 +182,9 @@ public class Home extends javax.swing.JFrame {
             String cid = jLabel3.getText();
 
             SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd");
             String dNow = sdf2.format(new Date());
+            String dnow2 = sdf3.format(new Date());
 
             MySQL.iud("INSERT INTO `invoice`(`customer_id`,`date_time`,`user_id`,`unique_id`) VALUES ('1','" + dNow + "','" + userId + "','" + unique_id + "')");
             //Invoive_insert
@@ -231,7 +234,7 @@ public class Home extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(this, "New Invoice created", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                String filePath = "src//reports//invoice_generate.jrxml";
+                InputStream filePath = getClass().getResourceAsStream("/reports/invoice_generate.jrxml");
                 JasperReport jr = JasperCompileManager.compileReport(filePath);
 
                 HashMap parameters = new HashMap();
@@ -239,6 +242,8 @@ public class Home extends javax.swing.JFrame {
                 parameters.put("Parameter1", jLabel6.getText());
                 parameters.put("Parameter2", jLabel7.getText());
                 parameters.put("Parameter3", jLabel8.getText());
+                parameters.put("Parameter4", unique_id);
+                parameters.put("Parameter5", dnow2);
 
                 DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
                 JRTableModelDataSource dataSource = new JRTableModelDataSource(dtm);

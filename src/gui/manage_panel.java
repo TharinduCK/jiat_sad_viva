@@ -18,6 +18,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.print.PrinterException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.text.MessageFormat;
@@ -590,7 +591,7 @@ public class manage_panel extends javax.swing.JFrame {
             String payment_type = jComboBox8.getSelectedItem().toString();
             // REPORT DETAILS
 
-            String filePath = "src//reports//shop_grn.jrxml";
+            InputStream filePath = getClass().getResourceAsStream("/reports/shop_grn.jrxml");
             JasperReport jr = JasperCompileManager.compileReport(filePath);
 
             HashMap parameters = new HashMap();
@@ -661,6 +662,22 @@ public class manage_panel extends javax.swing.JFrame {
 
             jTable7.setModel(dtm);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void regcomp() {
+        try {
+            ResultSet rs = MySQL.search("SELECT * FROM `company`");
+            DefaultListModel ls = new DefaultListModel();
+            while (rs.next()) {
+                ls.addElement(":- " + rs.getString("name"));
+
+            }
+
+            jList2.setModel(ls);
+            jList2.setFixedCellHeight(32);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -894,7 +911,13 @@ public class manage_panel extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
         pnlCard8 = new javax.swing.JPanel();
+        jButton43 = new javax.swing.JButton();
+        jButton44 = new javax.swing.JButton();
+        jButton45 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
         pnlCard9 = new javax.swing.JPanel();
+        jButton39 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -3119,28 +3142,104 @@ public class manage_panel extends javax.swing.JFrame {
 
         pnlCard8.setBackground(new java.awt.Color(255, 255, 255));
 
+        jButton43.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
+        jButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_update_22px.png"))); // NOI18N
+        jButton43.setText(" Refresh");
+        jButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton43ActionPerformed(evt);
+            }
+        });
+
+        jButton44.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
+        jButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_refund_22px_1.png"))); // NOI18N
+        jButton44.setText(" Refunded Amount Report");
+
+        jButton45.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
+        jButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_product_22px.png"))); // NOI18N
+        jButton45.setText(" Product Refund Details");
+        jButton45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton45ActionPerformed(evt);
+            }
+        });
+
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Name", "Stock ID", "Cashier Name", "Reason", "Refund Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(jTable8);
+        if (jTable8.getColumnModel().getColumnCount() > 0) {
+            jTable8.getColumnModel().getColumn(0).setResizable(false);
+            jTable8.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTable8.getColumnModel().getColumn(1).setResizable(false);
+            jTable8.getColumnModel().getColumn(2).setResizable(false);
+            jTable8.getColumnModel().getColumn(3).setResizable(false);
+            jTable8.getColumnModel().getColumn(3).setPreferredWidth(150);
+            jTable8.getColumnModel().getColumn(4).setResizable(false);
+            jTable8.getColumnModel().getColumn(4).setPreferredWidth(80);
+        }
+
         javax.swing.GroupLayout pnlCard8Layout = new javax.swing.GroupLayout(pnlCard8);
         pnlCard8.setLayout(pnlCard8Layout);
         pnlCard8Layout.setHorizontalGroup(
             pnlCard8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGroup(pnlCard8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlCard8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10)
+                    .addGroup(pnlCard8Layout.createSequentialGroup()
+                        .addComponent(jButton43, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlCard8Layout.setVerticalGroup(
             pnlCard8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGroup(pnlCard8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlCard8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton43, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jButton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pnlCard9.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton39.setText("jButton39");
 
         javax.swing.GroupLayout pnlCard9Layout = new javax.swing.GroupLayout(pnlCard9);
         pnlCard9.setLayout(pnlCard9Layout);
         pnlCard9Layout.setHorizontalGroup(
             pnlCard9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGroup(pnlCard9Layout.createSequentialGroup()
+                .addGap(232, 232, 232)
+                .addComponent(jButton39)
+                .addContainerGap(311, Short.MAX_VALUE))
         );
         pnlCard9Layout.setVerticalGroup(
             pnlCard9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGroup(pnlCard9Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jButton39)
+                .addContainerGap(360, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3420,6 +3519,7 @@ public class manage_panel extends javax.swing.JFrame {
         renderer.setHorizontalAlignment(JLabel.LEFT);
 
         loadSuppliers();
+        regcomp();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -4550,6 +4650,14 @@ public class manage_panel extends javax.swing.JFrame {
         hs.setVisible(true);
     }//GEN-LAST:event_jButton38ActionPerformed
 
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton43ActionPerformed
+
+    private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton45ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -4595,10 +4703,14 @@ public class manage_panel extends javax.swing.JFrame {
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton44;
+    private javax.swing.JButton jButton45;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -4751,6 +4863,7 @@ public class manage_panel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -4771,6 +4884,7 @@ public class manage_panel extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
