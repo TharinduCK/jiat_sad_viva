@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="refund_product_details" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="442d7879-8130-40fd-9e0f-fd5b8ca172ee">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Refund_amounts"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `refund` INNER JOIN `product` ON `product`.`id` = `refund`.`product_id` INNER JOIN `user` ON `user`.`id` = `refund`.`user_id` INNER JOIN `refund_reason` ON `refund_reason`.`id` = `refund`.`refund_reason_id` INNER JOIN `refund_type` ON `refund_type`.`id` = `refund`.`refund_type_id` INNER JOIN `stock` ON `stock`.`id` = `refund`.`stock_id`;]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="product"/>
+	</field>
+	<field name="stock_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="stock_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="stock_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="invoice_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="invoice_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="invoice_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reason"/>
+		<property name="com.jaspersoft.studio.field.label" value="reason"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund_reason"/>
+	</field>
+	<field name="type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="type"/>
+		<property name="com.jaspersoft.studio.field.label" value="type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund_type"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="32a3c74b-e9b0-4811-b01b-cf0ffc806f20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Refund Details Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="180" height="30" uuid="6d86746f-6ce7-4d2a-b1b7-78ef8eb552b8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7c0e6a63-d52a-4a26-b929-8b9199a1a640"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="60" height="30" uuid="cc352103-f361-4634-ba67-e0ebad2950fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19b6e1a4-1618-45ab-9bbb-baa20c111ca3"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="180" height="30" uuid="345a9280-7484-4042-8863-da06066d1b92">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7c0e6a63-d52a-4a26-b929-8b9199a1a640"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5" lineColor="#575757"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="60" height="30" uuid="b741d0be-3141-431b-89f3-23b00a35c381">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19b6e1a4-1618-45ab-9bbb-baa20c111ca3"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5" lineColor="#575757"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stock_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="70" height="30" uuid="d67ec6d1-65ba-409d-ad50-ce96da1d6667">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd0ad31c-dfe8-42f9-b572-393a51eafe40"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5" lineColor="#575757"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="133" height="30" uuid="2d710c9a-9b52-405a-8518-13445cc7837e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4062f546-c382-4b2f-9bc8-f59cac73b5a5"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5" lineColor="#575757"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reason}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="0" width="112" height="30" uuid="cfbf14f3-51ec-4770-a9f4-8bd46e5cb2c9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8931e3b5-dc92-4d8b-ade2-1f8330c5a8c5"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5" lineColor="#575757"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#575757"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="443" y="-30" width="112" height="30" uuid="c06f9fb7-29fd-4fa1-a03d-87eec86c32e5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8931e3b5-dc92-4d8b-ade2-1f8330c5a8c5"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Refund Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="-30" width="133" height="30" uuid="023a1130-0183-4a5a-9a11-b5614604439d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4062f546-c382-4b2f-9bc8-f59cac73b5a5"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Refund Reason]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="-30" width="70" height="30" uuid="8866e521-6db6-4fd1-960e-08fa0b303d65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd0ad31c-dfe8-42f9-b572-393a51eafe40"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice ID]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

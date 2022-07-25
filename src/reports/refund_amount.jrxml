@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="refund_amount" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="488f2b22-d7f2-42c7-9e35-fb0ab0db6d65">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Refund_amounts"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="503"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="483"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `refund` INNER JOIN `product` ON `product`.`id` = `refund`.`product_id` INNER JOIN `user` ON `user`.`id` = `refund`.`user_id` INNER JOIN `refund_reason` ON `refund_reason`.`id` = `refund`.`refund_reason_id` INNER JOIN `refund_type` ON `refund_type`.`id` = `refund`.`refund_type_id` INNER JOIN `stock` ON `stock`.`id` = `refund`.`stock_id`;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="product_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="product_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="product_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="invoice_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="invoice_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="invoice_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="stock_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="stock_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="stock_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="user_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="refund_reason_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="refund_reason_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="refund_reason_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="refund_type_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="refund_type_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="refund_type_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
+	</field>
+	<field name="COLUMN_9" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="product"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="product"/>
+	</field>
+	<field name="barcode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="barcode"/>
+		<property name="com.jaspersoft.studio.field.label" value="barcode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="product"/>
+	</field>
+	<field name="category_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="category_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="category_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="product"/>
+	</field>
+	<field name="brand_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="brand_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="brand_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="product"/>
+	</field>
+	<field name="COLUMN_14" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="COLUMN_15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="username" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="username"/>
+		<property name="com.jaspersoft.studio.field.label" value="username"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="password" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="password"/>
+		<property name="com.jaspersoft.studio.field.label" value="password"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="contact_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="contact_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="contact_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="user_type_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="user_type_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_type_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="user_status_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="user_status_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_status_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="city_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="city_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="city_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="COLUMN_22" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund_reason"/>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reason"/>
+		<property name="com.jaspersoft.studio.field.label" value="reason"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund_reason"/>
+	</field>
+	<field name="COLUMN_24" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund_type"/>
+	</field>
+	<field name="type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="type"/>
+		<property name="com.jaspersoft.studio.field.label" value="type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="refund_type"/>
+	</field>
+	<field name="COLUMN_26" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stock"/>
+	</field>
+	<field name="COLUMN_27" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="product_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="product_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stock"/>
+	</field>
+	<field name="quantity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stock"/>
+	</field>
+	<field name="selling_price" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="selling_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="selling_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stock"/>
+	</field>
+	<field name="mfd" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="mfd"/>
+		<property name="com.jaspersoft.studio.field.label" value="mfd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stock"/>
+	</field>
+	<field name="exd" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="exd"/>
+		<property name="com.jaspersoft.studio.field.label" value="exd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stock"/>
+	</field>
+	<variable name="selling_price1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{selling_price}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="553" height="79" uuid="59ddf0ce-6ca2-4ccf-ba45-3f598667aff5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Refunded Amount Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="130" height="30" uuid="e1d34d64-88f8-4e72-8bef-2305229a3567">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="257ebb1e-3e26-4add-b6ae-3cb1025ac1b9"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="0" width="84" height="30" uuid="80854bbc-90cf-48ab-a046-4a5166cd2cde">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9813949-0027-4d71-ba42-204f81b902ee"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Selling Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="80" height="30" uuid="2ce17441-3d2e-48ae-97f1-a0a4a20d9814">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c67691f-f33c-4b50-a666-807362bfd785"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Refund Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="8d5c022f-f55b-4fe3-a791-61a8a215efc5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4bec4c00-b390-49ac-acab-39dbd1ab6522"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="90" height="30" uuid="1fb181a8-624b-41ca-af6e-c8bd841e8ab0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="afad20ea-733a-468e-ba47-36ab15de3159"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cashier Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="0" width="70" height="30" uuid="0ae66477-3e13-4c2d-a4aa-5c546bf6de4c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0cdeead-3832-4091-8cee-bf90b18ac47b"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[stock_id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="130" height="30" uuid="f1d67d88-cfc9-4dbf-9340-4c0199ba5fb4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="257ebb1e-3e26-4add-b6ae-3cb1025ac1b9"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#6B6B6B"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="0" width="84" height="30" uuid="7814d92d-02c5-4ca0-af7f-48c82c8ace60">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9813949-0027-4d71-ba42-204f81b902ee"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#6B6B6B"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selling_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="80" height="30" uuid="fa9b44a0-23a9-4b73-bf99-4cc66db80018">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c67691f-f33c-4b50-a666-807362bfd785"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#6B6B6B"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="b4d3ad88-e9df-4926-abfe-928fc63c6b6b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4bec4c00-b390-49ac-acab-39dbd1ab6522"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#6B6B6B"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="90" height="30" uuid="d1fbcb9a-af81-4111-848c-ef9229ace52a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="afad20ea-733a-468e-ba47-36ab15de3159"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#6B6B6B"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="70" height="30" uuid="3a30bcb4-15ad-4b2d-97f1-3d4127162959">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0cdeead-3832-4091-8cee-bf90b18ac47b"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#6B6B6B"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#6B6B6B"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stock_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="470" y="0" width="84" height="30" uuid="00f059c7-df07-4af9-8186-ebff72ef83e9"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{selling_price1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="0" width="90" height="30" uuid="d41333e4-e53b-4851-a407-1aa0c5d0b37d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
