@@ -71,10 +71,10 @@ public class Home extends javax.swing.JFrame {
     private int search_state = 1;
 
     private void load_components() {
-        setExtendedState(MAXIMIZED_BOTH);
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
+
+        setExtendedState(MAXIMIZED_BOTH);
 
         jTable1.getTableHeader().setFont(new Font("Open Sans SemiBold", 0, 14));
         model.JTableUtilities.setCellsAlignment(jTable1, (int) LEFT_ALIGNMENT);
