@@ -989,6 +989,10 @@ public class Home extends javax.swing.JFrame {
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
 
+        jLabel6.setText("0.00");
+        jLabel7.setText("0.00");
+        jLabel8.setText("0.00");
+
         jTextField1.setText("");
     }//GEN-LAST:event_jButton17ActionPerformed
 
@@ -1016,6 +1020,10 @@ public class Home extends javax.swing.JFrame {
         jButton8.setBackground(new Color(203, 229, 255));
         jButton9.setBackground(new Color(203, 229, 255));
         jButton10.setBackground(new Color(203, 229, 255));
+
+        jLabel6.setText("0.00");
+        jLabel7.setText("0.00");
+        jLabel8.setText("0.00");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
