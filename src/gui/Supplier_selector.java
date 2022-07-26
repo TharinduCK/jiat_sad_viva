@@ -6,10 +6,15 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import model.MySQL;
 
 /**
@@ -20,11 +25,21 @@ public class Supplier_selector extends javax.swing.JDialog {
 
     manage_panel mr;
 
+    private static final int HEADER_HEIGHT = 27;
+
     public Supplier_selector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.mr = (manage_panel) parent;
         initComponents();
         loadSupplier();
+
+        jTable1.getTableHeader().setFont(new Font("Open Sans SemiBold", 0, 13));
+
+        JTableHeader header = jTable1.getTableHeader();
+        header.setPreferredSize(new Dimension(100, HEADER_HEIGHT));
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(JLabel.LEFT);
     }
 
     private void loadSupplier() {
@@ -102,7 +117,7 @@ public class Supplier_selector extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

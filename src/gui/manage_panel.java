@@ -3703,6 +3703,14 @@ public class manage_panel extends javax.swing.JFrame {
 
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTable6.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(JLabel.LEFT);
+
+        jTable7.getTableHeader().setFont(new Font("Open Sans SemiBold", 0, 13));
+
+        JTableHeader header1 = jTable7.getTableHeader();
+        header1.setPreferredSize(new Dimension(100, HEADER_HEIGHT));
+
+        DefaultTableCellRenderer renderer1 = (DefaultTableCellRenderer) jTable7.getTableHeader().getDefaultRenderer();
+        renderer1.setHorizontalAlignment(JLabel.LEFT);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -3712,6 +3720,14 @@ public class manage_panel extends javax.swing.JFrame {
         mainPanel.add(pnlCard8);
 
         loadrefund();
+        
+        jTable8.getTableHeader().setFont(new Font("Open Sans SemiBold", 0, 13));
+
+        JTableHeader header = jTable8.getTableHeader();
+        header.setPreferredSize(new Dimension(100, HEADER_HEIGHT));
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTable8.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(JLabel.LEFT);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

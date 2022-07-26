@@ -6,10 +6,15 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import model.MySQL;
 
 /**
@@ -19,12 +24,21 @@ import model.MySQL;
 public class Branch_selector extends javax.swing.JDialog {
 
     Supplier_registration sr;
+    private static final int HEADER_HEIGHT = 27;
 
     public Branch_selector(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         this.sr = (Supplier_registration) parent;
         initComponents();
         loadCompanyBranches();
+
+        jTable1.getTableHeader().setFont(new Font("Open Sans SemiBold", 0, 13));
+
+        JTableHeader header = jTable1.getTableHeader();
+        header.setPreferredSize(new Dimension(100, HEADER_HEIGHT));
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(JLabel.LEFT);
     }
 
     public void loadCompanyBranches() {
@@ -69,11 +83,11 @@ public class Branch_selector extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Company Id", "Company Name", "Branch Id", "Branch Name", "Contact Number", "Address"
+                "Company ID", "Company Name", "Branch ID", "Branch Name", "Contact Number", "Address"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -95,7 +109,7 @@ public class Branch_selector extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
