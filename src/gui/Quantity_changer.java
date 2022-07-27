@@ -7,27 +7,30 @@ package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import model.MySQL;
 
 /**
  *
  * @author thari
  */
 public class Quantity_changer extends javax.swing.JDialog {
-
+    
     DecimalFormat df = new DecimalFormat("0.00");
     Home hr;
     public double subtotal;
-
+    
     public Quantity_changer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.hr = (Home) parent;
         initComponents();
-
+        
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -101,7 +104,7 @@ public class Quantity_changer extends javax.swing.JDialog {
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         String qty = jTextField1.getText();
         String text = qty + evt.getKeyChar();
-
+        
         if (!Pattern.compile("[1-9][0-9]*").matcher(text).matches()) {
             evt.consume();
         }
@@ -110,16 +113,32 @@ public class Quantity_changer extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         double price = Double.parseDouble(hr.jTable1.getValueAt(hr.productrow, 2).toString());
         int qty = Integer.parseInt(jTextField1.getText());
+        
+        int stock_id = Integer.parseInt(hr.stock_id.get(hr.productrow).toString());
+        
+        try {
+            ResultSet stock = MySQL.search("SELECT * FROM `stock` WHERE `id` = '" + stock_id + "'");
+            stock.next();
+            
+            int stock_qty = Integer.parseInt(stock.getString("quantity"));
+            
+            if (stock_qty <= qty) {
+                JOptionPane.showMessageDialog(this, "Out or range", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                double out = price * qty;
+                
+                hr.jTable1.setValueAt(jTextField1.getText(), hr.productrow, hr.jTable1.getColumn("Quantity").getModelIndex());
+                hr.jTable1.setValueAt(df.format(out), hr.productrow, hr.jTable1.getColumn("Amount").getModelIndex());
+                
+                hr.quantity.set(hr.productrow, jTextField1.getText());
+                Item_stock_selector iss = new Item_stock_selector(hr, true);
+                iss.totalcal();
+                this.dispose();
+            }
+        } catch (Exception e) {
+        }
+        
 
-        double out = price * qty;
-
-        hr.jTable1.setValueAt(jTextField1.getText(), hr.productrow, hr.jTable1.getColumn("Quantity").getModelIndex());
-        hr.jTable1.setValueAt(df.format(out), hr.productrow, hr.jTable1.getColumn("Amount").getModelIndex());
-
-        hr.quantity.set(hr.productrow, jTextField1.getText());
-        Item_stock_selector iss = new Item_stock_selector(hr, true);
-        iss.totalcal();
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -2702,6 +2702,7 @@ public class manage_panel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTable5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -3068,6 +3069,7 @@ public class manage_panel extends javax.swing.JFrame {
         jLabel92.setFont(new java.awt.Font("Open Sans Semibold", 0, 13)); // NOI18N
         jLabel92.setText("Company Registration");
 
+        jTable6.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -3274,6 +3276,7 @@ public class manage_panel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTable7.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -3356,6 +3359,7 @@ public class manage_panel extends javax.swing.JFrame {
             }
         });
 
+        jTable8.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
