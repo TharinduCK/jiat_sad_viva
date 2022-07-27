@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
@@ -64,6 +65,8 @@ public class manage_panel extends javax.swing.JFrame {
         jButton8.grabFocus();
 
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
+
+        dashboard();
     }
 
     public void loadBrands() {
@@ -774,7 +777,82 @@ public class manage_panel extends javax.swing.JFrame {
     }
 
     private void dashboard() {
+        try {
+            ResultSet totalearnings = MySQL.search("SELECT SUM(`invoice_item`.`qty`*`stock`.`selling_price` - `invoice_item`.`discount`) AS total FROM `invoice_item` INNER JOIN `stock` ON `stock`.`id` = `invoice_item`.`stock_id`");
+            totalearnings.next();
 
+            if (totalearnings.getString("total") == null) {
+                jLabel15.setText("No Refunds");
+            } else {
+                jLabel15.setText(totalearnings.getString("total") + "0");
+            }
+
+            Date date = new Date();
+            ResultSet todayearn = MySQL.search("SELECT SUM(`invoice_item`.`qty`*`stock`.`selling_price` - `invoice_item`.`discount`) AS total FROM `invoice_item` INNER JOIN `stock` ON `stock`.`id` = `invoice_item`.`stock_id` INNER JOIN `invoice` ON `invoice`.`id` = `invoice_item`.`invoice_id` WHERE `invoice`.`date_time` LIKE '%" + sdf.format(date) + "%'");
+            todayearn.next();
+
+            if (todayearn.getString("total") == null) {
+                jLabel10.setText("-");
+            } else {
+                jLabel10.setText(todayearn.getString("total") + "0");
+            }
+
+            ResultSet refund = MySQL.search("SELECT SUM(`stock`.`selling_price`) AS total FROM `refund` INNER JOIN `stock` ON `stock`.`id` = `refund`.`stock_id` WHERE `refund_type_id` != 3");
+            refund.next();
+
+            if (refund.getString("total") == null) {
+                jLabel85.setText("-");
+            } else {
+                jLabel85.setText(refund.getString("total") + "0");
+            }
+
+            ResultSet refund_count = MySQL.search("SELECT COUNT(`id`) AS total FROM `refund`");
+            refund_count.next();
+
+            if (refund_count.getString("total") == null) {
+                jLabel14.setText("-");
+            } else {
+                jLabel14.setText(refund_count.getString("total"));
+            }
+
+            ResultSet regcomp = MySQL.search("SELECT COUNT(`id`) AS total FROM `company`");
+            regcomp.next();
+
+            if (regcomp.getString("total") == null) {
+                jLabel9.setText("-");
+            } else {
+                jLabel9.setText(regcomp.getString("total"));
+            }
+
+            ResultSet totalusers = MySQL.search("SELECT COUNT(`id`) AS total FROM `user`");
+            totalusers.next();
+
+            if (totalusers.getString("total") == null) {
+                jLabel11.setText("-");
+            } else {
+                jLabel11.setText(totalusers.getString("total"));
+            }
+
+            ResultSet totalsuppliers = MySQL.search("SELECT COUNT(`id`) AS total FROM `supplier`");
+            totalsuppliers.next();
+
+            if (totalsuppliers.getString("total") == null) {
+                jLabel17.setText("-");
+            } else {
+                jLabel17.setText(totalsuppliers.getString("total"));
+            }
+
+            ResultSet topproduct = MySQL.search("SELECT `product`.`name`, COUNT(`product`.`name`) AS `value_occurrence` FROM `invoice_item` INNER JOIN `stock` ON `invoice_item`.stock_id = `stock`.`id` INNER JOIN `product` ON `product`.`id` = `stock`.`product_id` GROUP BY `product`.`name` ORDER BY `value_occurrence` DESC LIMIT 1");
+            topproduct.next();
+
+            if (topproduct.getString("product.name") == null) {
+                jLabel16.setText("-");
+            } else {
+                jLabel16.setText(topproduct.getString("product.name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -1139,7 +1217,7 @@ public class manage_panel extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Open Sans Semibold", 0, 16)); // NOI18N
         jLabel5.setText("Refund Count");
 
-        jLabel14.setFont(new java.awt.Font("Open Sans Semibold", 0, 20)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Open Sans Semibold", 0, 36)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("5");
 
@@ -1267,7 +1345,7 @@ public class manage_panel extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Open Sans Semibold", 0, 16)); // NOI18N
         jLabel12.setText("Refund Amount");
 
-        jLabel85.setFont(new java.awt.Font("Open Sans Semibold", 0, 20)); // NOI18N
+        jLabel85.setFont(new java.awt.Font("Open Sans Semibold", 0, 36)); // NOI18N
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel85.setText("5000.00");
 
@@ -3662,6 +3740,8 @@ public class manage_panel extends javax.swing.JFrame {
         mainPanel.repaint();
         mainPanel.revalidate();
         mainPanel.add(pnlCard1);
+
+        dashboard();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
