@@ -8,6 +8,7 @@ package gui;
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.JLabel;
@@ -39,6 +40,8 @@ public class Branch_selector extends javax.swing.JDialog {
 
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(JLabel.LEFT);
+        
+         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     public void loadCompanyBranches() {

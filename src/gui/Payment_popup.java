@@ -7,6 +7,7 @@ package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -36,6 +37,8 @@ public class Payment_popup extends javax.swing.JDialog {
         jLabel22.setText(hr.jLabel8.getText());
         jButton1.grabFocus();
         jTextField3.setEditable(true);
+
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     /**

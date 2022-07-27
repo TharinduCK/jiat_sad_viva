@@ -6,6 +6,7 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,8 @@ public class Quantity_changer extends javax.swing.JDialog {
         super(parent, modal);
         this.hr = (Home) parent;
         initComponents();
+
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     @SuppressWarnings("unchecked")

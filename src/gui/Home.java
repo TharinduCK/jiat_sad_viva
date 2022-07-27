@@ -126,6 +126,8 @@ public class Home extends javax.swing.JFrame {
 
         jButton11.setVerticalTextPosition(JButton.BOTTOM);
         jButton11.setHorizontalTextPosition(JButton.CENTER);
+
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     private void button_disable() {

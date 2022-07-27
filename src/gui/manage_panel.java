@@ -62,6 +62,8 @@ public class manage_panel extends javax.swing.JFrame {
 
         mainPanel.add(pnlCard1);
         jButton8.grabFocus();
+
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     public void loadBrands() {
@@ -770,9 +772,9 @@ public class manage_panel extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    private void dashboard(){
-        
+
+    private void dashboard() {
+
     }
 
     @SuppressWarnings("unchecked")

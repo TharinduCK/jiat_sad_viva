@@ -6,6 +6,7 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -26,6 +27,8 @@ public class Supplier_registration extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.pr = (manage_panel) parent;
+
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     /**

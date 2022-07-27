@@ -6,6 +6,7 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -26,6 +27,8 @@ public class Invoice_item_selector extends javax.swing.JDialog {
         this.rp = (Refund_panel) parent;
         initComponents();
         load();
+
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     private void load() {

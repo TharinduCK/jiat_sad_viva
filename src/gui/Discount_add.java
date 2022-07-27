@@ -6,6 +6,7 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Toolkit;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -23,6 +24,8 @@ public class Discount_add extends javax.swing.JDialog {
         initComponents();
 
         jLabel3.setText(hr.jTable1.getValueAt(hr.jTable1.getSelectedRow(), 0).toString());
+        
+         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     @SuppressWarnings("unchecked")
