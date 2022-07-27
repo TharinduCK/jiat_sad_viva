@@ -43,7 +43,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="refund_type_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
 	</field>
-	<field name="date" class="java.sql.Date">
+	<field name="date" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="date"/>
 		<property name="com.jaspersoft.studio.field.label" value="date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="refund"/>
@@ -180,9 +180,6 @@
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>

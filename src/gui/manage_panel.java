@@ -6,9 +6,6 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import static gui.System_login.userId;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,13 +13,10 @@ import java.awt.Font;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
-import java.awt.print.PrinterException;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,7 +27,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -42,6 +35,7 @@ import model.MySQL;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 import net.sf.jasperreports.view.JasperViewer;
@@ -721,6 +715,21 @@ public class manage_panel extends javax.swing.JFrame {
             jList2.setFixedCellHeight(32);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void report_generator(String path) {
+        try {
+            InputStream filePath = getClass().getResourceAsStream(path);
+            JasperReport jr = JasperCompileManager.compileReport(filePath);
+
+            HashMap parameters = new HashMap();
+
+            Connection dataSource = MySQL.getConnection();
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
+            JasperViewer.viewReport(jp, false);
+        } catch (Exception e) {
         }
     }
 
@@ -1512,6 +1521,11 @@ public class manage_panel extends javax.swing.JFrame {
         jButton20.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_update_22px.png"))); // NOI18N
         jButton20.setText(" Refresh");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         jButton21.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_print_22px.png"))); // NOI18N
@@ -1525,10 +1539,20 @@ public class manage_panel extends javax.swing.JFrame {
         jButton22.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_stocks_22px.png"))); // NOI18N
         jButton22.setText("Available Stocks Report");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         jButton23.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_out_of_stock_22px.png"))); // NOI18N
         jButton23.setText("Out of Stock Report");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1958,7 +1982,7 @@ public class manage_panel extends javax.swing.JFrame {
                     .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlCard3Layout = new javax.swing.GroupLayout(pnlCard3);
@@ -2331,6 +2355,11 @@ public class manage_panel extends javax.swing.JFrame {
         jButton34.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_report_file_22px.png"))); // NOI18N
         jButton34.setText("Suppliers Details Report");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -2352,6 +2381,11 @@ public class manage_panel extends javax.swing.JFrame {
         );
 
         jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_22px.png"))); // NOI18N
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCard5Layout = new javax.swing.GroupLayout(pnlCard5);
         pnlCard5.setLayout(pnlCard5Layout);
@@ -2868,11 +2902,6 @@ public class manage_panel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable6MouseClicked(evt);
-            }
-        });
         jScrollPane8.setViewportView(jTable6);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
@@ -3278,6 +3307,11 @@ public class manage_panel extends javax.swing.JFrame {
         jButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_out_of_stock_22px.png"))); // NOI18N
         jButton48.setText(" Out of Stock Products Report");
         jButton48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton48ActionPerformed(evt);
+            }
+        });
 
         jButton49.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
         jButton49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_refund_22px_1.png"))); // NOI18N
@@ -3293,6 +3327,11 @@ public class manage_panel extends javax.swing.JFrame {
         jButton50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_company_22px.png"))); // NOI18N
         jButton50.setText(" Companies and Branches Report");
         jButton50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton50ActionPerformed(evt);
+            }
+        });
 
         jButton51.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
         jButton51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_supplier_22px.png"))); // NOI18N
@@ -3318,11 +3357,21 @@ public class manage_panel extends javax.swing.JFrame {
         jButton53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_ingredients_22px.png"))); // NOI18N
         jButton53.setText(" Sold Items Report");
         jButton53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton53ActionPerformed(evt);
+            }
+        });
 
         jButton54.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
         jButton54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_payment_history_22px_1.png"))); // NOI18N
         jButton54.setText(" Refund Details Report");
         jButton54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton54ActionPerformed(evt);
+            }
+        });
 
         jButton55.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
         jButton55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_close_window_22px.png"))); // NOI18N
@@ -3744,34 +3793,7 @@ public class manage_panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        String path = "C:\\Users\\thari\\Desktop\\";
-        Document doc = new Document();
-        try {
-            PdfWriter.getInstance(doc, new FileOutputStream(path + "products.pdf"));
-            doc.open();
-            PdfPTable tb1 = new PdfPTable(5);
-            tb1.addCell("Product ID");
-            tb1.addCell("Product Name");
-            tb1.addCell("Barcode");
-            tb1.addCell("Brand");
-            tb1.addCell("Category");
-
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
-                tb1.addCell(jTable1.getValueAt(i, 0).toString());
-                tb1.addCell(jTable1.getValueAt(i, 1).toString());
-                tb1.addCell(jTable1.getValueAt(i, 2).toString());
-                tb1.addCell(jTable1.getValueAt(i, 3).toString());
-                tb1.addCell(jTable1.getValueAt(i, 4).toString());
-            }
-
-            doc.add(tb1);
-            JOptionPane.showMessageDialog(this, "PDF Generated", "Information", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-
-        }
-
-        doc.close();
-
+        report_generator("/reports/product.jrxml");
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -3945,7 +3967,18 @@ public class manage_panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
+        try {
+            InputStream filePath = getClass().getResourceAsStream("/reports/stock_table.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(filePath);
+
+            HashMap parameters = new HashMap();
+
+            Connection dataSource = MySQL.getConnection();
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
+            JasperPrintManager.printReport(jp, true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
@@ -4648,27 +4681,6 @@ public class manage_panel extends javax.swing.JFrame {
         jTextField3.setText(bar);
     }//GEN-LAST:event_jButton18ActionPerformed
 
-    private void jTable6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable6MouseClicked
-
-//        if (evt.getClickCount() == 2) {
-//            int r = jTable1.getSelectedRow();
-//
-//            if (r == -1) {
-//                JOptionPane.showMessageDialog(this, "Please select a company", "Warning", JOptionPane.WARNING_MESSAGE);
-//            } else {
-//
-//                String id = jTable1.getValueAt(r, 0).toString();
-//                String name = jTable1.getValueAt(r, 1).toString();
-//
-//                br.jLabel8.setText(id);
-//                br.jLabel11.setText(name);
-//
-//                this.dispose();
-//
-//            }
-//        }
-    }//GEN-LAST:event_jTable6MouseClicked
-
     private void jTextField22KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField22KeyTyped
 
         String mobile = jTextField22.getText();
@@ -4818,62 +4830,99 @@ public class manage_panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton43ActionPerformed
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
-        try {
-            InputStream filePath = getClass().getResourceAsStream("/reports/refund_product_details.jrxml");
-            JasperReport jr = JasperCompileManager.compileReport(filePath);
-
-            HashMap parameters = new HashMap();
-
-            Connection dataSource = MySQL.getConnection();
-
-            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
-            JasperViewer.viewReport(jp, false);
-        } catch (Exception e) {
-        }
+        report_generator("/reports/refund_product_details.jrxml");
     }//GEN-LAST:event_jButton45ActionPerformed
 
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
-        try {
-            InputStream filePath = getClass().getResourceAsStream("/reports/refund_amount.jrxml");
-            JasperReport jr = JasperCompileManager.compileReport(filePath);
-
-            HashMap parameters = new HashMap();
-
-            Connection dataSource = MySQL.getConnection();
-
-            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
-            JasperViewer.viewReport(jp, false);
-        } catch (Exception e) {
-        }
+        report_generator("/reports/refund_amount.jrxml");
     }//GEN-LAST:event_jButton44ActionPerformed
 
     private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/product.jrxml");
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/dusers.jrxml");
     }//GEN-LAST:event_jButton55ActionPerformed
 
     private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/totalearnings.jrxml");
     }//GEN-LAST:event_jButton56ActionPerformed
 
     private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/refund_amount.jrxml");
     }//GEN-LAST:event_jButton49ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/grn.jrxml");
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/supplier.jrxml");
     }//GEN-LAST:event_jButton51ActionPerformed
 
     private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
-        // TODO add your handling code here:
+        report_generator("/reports/instock.jrxml");
     }//GEN-LAST:event_jButton46ActionPerformed
+
+    private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
+        report_generator("/reports/refund_product_details.jrxml");
+    }//GEN-LAST:event_jButton54ActionPerformed
+
+    private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
+        report_generator("/reports/outofstock.jrxml");
+    }//GEN-LAST:event_jButton48ActionPerformed
+
+    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+        report_generator("/reports/candb.jrxml");
+    }//GEN-LAST:event_jButton50ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        report_generator("/reports/instock.jrxml");
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        report_generator("/reports/outofstock.jrxml");
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
+        report_generator("/reports/solditem.jrxml");
+    }//GEN-LAST:event_jButton53ActionPerformed
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+        report_generator("/reports/supplier.jrxml");
+    }//GEN-LAST:event_jButton34ActionPerformed
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        try {
+            ResultSet rs = MySQL.search("SELECT * FROM `supplier` INNER JOIN `company_branch` ON `supplier`.`company_branch_id`=`company_branch`.`id` INNER JOIN `company_branch_address` ON `company_branch_address`.`id`=`company_branch`.`company_branch_address_id` INNER JOIN `city` ON `city`.`id`= `company_branch_address`.`city_id` WHERE `supplier`.`name` LIKE '%" + jTextField12.getText() + "%' OR `company_branch`.`name` LIKE '%" + jTextField12.getText() + "%' ORDER BY `supplier`.`id` ASC");
+            DefaultTableModel dtm = (DefaultTableModel) jTable4.getModel();
+            dtm.setRowCount(0);
+
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString("supplier.id"));
+                v.add(rs.getString("supplier.name"));
+                v.add(rs.getString("supplier.contact_number"));
+                v.add(rs.getString("supplier.email"));
+                v.add(rs.getString("company_branch.name"));
+                v.add(rs.getString("company_branch.branch_contact_number"));
+                String address = rs.getString("company_branch_address.line1") + "," + rs.getString("company_branch_address.line2") + "," + rs.getString("city.name");
+                v.add(address);
+                dtm.addRow(v);
+            }
+
+            jTable4.setModel(dtm);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        loadStock();
+        lowStock();
+    }//GEN-LAST:event_jButton20ActionPerformed
 
     /**
      * @param args the command line arguments

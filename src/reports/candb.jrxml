@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="instock" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8819c0a-2444-4ae8-ab99-dc5437c52d6e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Refund_amounts"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `company_branch` INNER JOIN `company` ON `company_branch`.`company_id` = `company`.`id`]]>
+	</queryString>
+	<field name="branch_contact_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="branch_contact_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="branch_contact_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="company_branch"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="company_branch"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="company"/>
+	</field>
+	<field name="contact_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="contact_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="contact_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="company"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="79" uuid="dc745149-423e-4374-92c9-7d6f86f84282"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Company and Branch Details Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="0" width="159" height="30" uuid="9f51d387-3662-4e25-9325-4836331641b1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1196590-c67b-4582-a7a9-f49c289415b1"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Company Contact Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="0" width="146" height="30" uuid="f398cdb6-477c-4253-8aa5-1e2d026dc829">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9796e89a-6a06-4bbc-b083-d3772c7a1904"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Branch Contact Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="0" width="110" height="30" uuid="aad32fb9-82b4-4c34-b483-7733ad48eb4f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4819684-2017-433f-a7cd-eaa4d6f619a6"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Branch Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="30" uuid="222eaaf0-7bad-4262-9b08-1de1cef39004">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="382b027c-492b-4c9f-ac94-be6684676cae"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Company Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="299" y="0" width="110" height="30" uuid="236fed34-9926-432b-bcf2-83982680081d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62f57d4c-154c-4456-86f1-671953cfb063"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#696666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="140" height="30" uuid="7b9d95cc-e6d6-4284-81d1-059cbdf74ce8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6ebe1e3a-16ca-4869-9da6-d632a045e4a3"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#696666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="159" height="30" uuid="bf679151-cd69-4883-91bc-cefa20603a83">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0954318c-ff3a-4c99-a578-a67cc74e0277"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#696666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="0" width="144" height="30" uuid="1a39c290-3119-4159-a6ed-caf6bf0df5b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d50e0fd9-231a-4e0f-bc2a-fa2aca6d9dc7"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.75" lineColor="#696666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{branch_contact_number}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
