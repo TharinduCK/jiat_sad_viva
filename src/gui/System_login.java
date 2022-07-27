@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.MySQL;
 
@@ -28,6 +29,7 @@ public class System_login extends javax.swing.JFrame {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
+
     }
 
     /**
@@ -226,13 +228,19 @@ public class System_login extends javax.swing.JFrame {
             try {
                 ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `username`='" + username + "' AND `password`='" + password + "'");
                 if (resultset.next()) {
-                    JOptionPane.showMessageDialog(this, "Sign in success", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                    userId = Integer.parseInt(resultset.getString("id"));
+                    if (resultset.getString("user_status_id").equals("2")) {
+                        JOptionPane.showMessageDialog(this, "You have not permisson to access system", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sign in success", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                    Home home = new Home();
-                    home.setVisible(true);
-                    this.dispose();
+                        userId = Integer.parseInt(resultset.getString("id"));
+
+                        Home home = new Home();
+                        home.setVisible(true);
+                        this.dispose();
+
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid username or password", "Warning", JOptionPane.WARNING_MESSAGE);

@@ -5,6 +5,7 @@
 package gui;
 
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Toolkit;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Start extends javax.swing.JFrame {
      */
     public Start() {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
 
     /**

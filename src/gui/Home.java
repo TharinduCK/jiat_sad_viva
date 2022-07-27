@@ -232,8 +232,6 @@ public class Home extends javax.swing.JFrame {
 
                 jButton16.setText(String.valueOf(jb));
 
-                JOptionPane.showMessageDialog(this, "New Invoice created", "Success", JOptionPane.INFORMATION_MESSAGE);
-
                 InputStream filePath = getClass().getResourceAsStream("/reports/invoice_generate.jrxml");
                 JasperReport jr = JasperCompileManager.compileReport(filePath);
 
@@ -250,6 +248,18 @@ public class Home extends javax.swing.JFrame {
 
                 JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
                 JasperViewer.viewReport(jp, false);
+
+                pay_id = 0;
+
+                jButton8.setBackground(new Color(203, 229, 255));
+                jButton9.setBackground(new Color(203, 229, 255));
+                jButton10.setBackground(new Color(203, 229, 255));
+
+                jLabel6.setText("0.00");
+                jLabel7.setText("0.00");
+                jLabel8.setText("0.00");
+
+                JOptionPane.showMessageDialog(this, "New Invoice created", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                 dtm.setRowCount(0);
 
