@@ -211,6 +211,7 @@ public class manage_panel extends javax.swing.JFrame {
     }
 
     public void loadStock() {
+        String outofqty = null;
         try {
             ResultSet rs = MySQL.search("SELECT DISTINCT `stock`.`id`,`product`.`id`,`category`.`name`,`brand`.`name`,`product`.`name`,`stock`.`quantity`,`grn_item`.`buying_price`,`stock`.`selling_price`,`stock`.`mfd`, `stock`.`exd` FROM `stock` INNER JOIN `grn_item` ON `grn_item`.`stock_id` = `stock`.`id` INNER JOIN `product` ON `stock`.`product_id` = `product`.`id` INNER JOIN `brand` ON `product`.`brand_id` = `brand`.`id` INNER JOIN category ON `product`.`category_id` = `category`.id ORDER BY `product`.`name` ASC");
             DefaultTableModel dtm = (DefaultTableModel) jTable3.getModel();
@@ -227,6 +228,23 @@ public class manage_panel extends javax.swing.JFrame {
                 v.add(rs.getString("stock.mfd"));
                 v.add(rs.getString("stock.exd"));
                 dtm.addRow(v);
+
+                if (rs.getString("stock.quantity").equals("0")) {
+                    if (outofqty == null) {
+                        outofqty = "";
+                    }
+
+                    outofqty += rs.getString("product.name") + "\n";
+                }
+            }
+
+            System.out.println(outofqty);
+            if (outofqty == null) {
+
+            } else {
+                StringBuffer sb = new StringBuffer(outofqty);
+                sb.deleteCharAt(sb.length() - 1);
+                JOptionPane.showMessageDialog(this, sb + "\n These products are out of stock", "Warning", JOptionPane.WARNING_MESSAGE);
             }
 
             jTable3.setModel(dtm);
@@ -4836,6 +4854,9 @@ public class manage_panel extends javax.swing.JFrame {
                     jTextField1.grabFocus();
                     loadCompanies();
                     JOptionPane.showMessageDialog(this, "New company added", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                    jTextField21.setText("");
+                    jTextField22.setText("");
                 }
 
             } catch (Exception ex) {
