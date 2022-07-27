@@ -32,12 +32,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
+import model.Barcode;
 import model.MySQL;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -926,6 +928,7 @@ public class manage_panel extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton18 = new javax.swing.JButton();
+        jButton39 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jButton17 = new javax.swing.JButton();
         pnlCard3 = new javax.swing.JPanel();
@@ -1568,11 +1571,20 @@ public class manage_panel extends javax.swing.JFrame {
         jLabel21.setText("Barcode  :");
 
         jButton18.setBackground(new java.awt.Color(242, 242, 252));
-        jButton18.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
+        jButton18.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
         jButton18.setText("Generate Barcode");
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
+            }
+        });
+
+        jButton39.setBackground(new java.awt.Color(242, 242, 252));
+        jButton39.setFont(new java.awt.Font("Open Sans Semibold", 0, 12)); // NOI18N
+        jButton39.setText("Print Barcode");
+        jButton39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton39ActionPerformed(evt);
             }
         });
 
@@ -1596,12 +1608,13 @@ public class manage_panel extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1626,7 +1639,9 @@ public class manage_panel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -5070,6 +5085,39 @@ public class manage_panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable6MouseClicked
 
+    private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
+        String barcode = jTextField3.getText();
+
+        if (barcode.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please Enter Barcode", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+
+                InputStream filePath = getClass().getResourceAsStream("/reports/BarCode.jrxml");
+                JasperReport jr = JasperCompileManager.compileReport(filePath);
+
+                HashMap parameters = new HashMap();
+
+                Vector v = new Vector();
+                v.add(new Barcode(barcode));
+                v.add(new Barcode(barcode));
+                v.add(new Barcode(barcode));
+                v.add(new Barcode(barcode));
+                v.add(new Barcode(barcode));
+                v.add(new Barcode(barcode));
+                v.add(new Barcode(barcode));
+
+                JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(v);
+
+                JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
+                JasperViewer.viewReport(jp, false);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButton39ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -5114,6 +5162,7 @@ public class manage_panel extends javax.swing.JFrame {
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton43;

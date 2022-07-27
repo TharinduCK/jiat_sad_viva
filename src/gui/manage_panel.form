@@ -800,14 +800,15 @@
                           <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextField3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jButton14" min="-2" pref="143" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton15" min="-2" pref="144" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jButton18" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton14" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jButton18" min="-2" pref="143" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton15" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="jButton39" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -841,7 +842,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel21" max="32767" attributes="0"/>
-                          <Component id="jButton18" alignment="1" pref="33" max="32767" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="jButton18" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jButton39" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jTextField3" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -944,12 +948,26 @@
                   <Color blue="fc" green="f2" red="f2" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Open Sans Semibold" size="14" style="0"/>
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generate Barcode"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton39">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fc" green="f2" red="f2" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Open Sans Semibold" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Print Barcode"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton39ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
