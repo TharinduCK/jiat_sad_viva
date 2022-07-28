@@ -190,7 +190,7 @@ public class Home extends javax.swing.JFrame {
             String dNow = sdf2.format(new Date());
             String dnow2 = sdf3.format(new Date());
 
-            MySQL.iud("INSERT INTO `invoice`(`customer_id`,`date_time`,`user_id`,`unique_id`) VALUES ('1','" + dNow + "','" + userId + "','" + unique_id + "')");
+            MySQL.iud("INSERT INTO `invoice`(`date_time`,`user_id`,`unique_id`) VALUES ('" + dNow + "','" + userId + "','" + unique_id + "')");
             //Invoive_insert
 
             try {
