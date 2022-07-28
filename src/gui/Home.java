@@ -41,7 +41,7 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author thari
  */
 public class Home extends javax.swing.JFrame {
-    
+
     private static int HEADER_HEIGHT = 35;
     public String product_set_id;
     public int set_qty = 1;
@@ -61,7 +61,7 @@ public class Home extends javax.swing.JFrame {
     public String payment_type;
     public double balance;
     public int count;
-    
+
     public Home() {
         initComponents();
         load_components();
@@ -69,76 +69,76 @@ public class Home extends javax.swing.JFrame {
         jPopupMenu1.setFocusable(false);
         button_disable();
     }
-    
+
     private int search_state = 1;
     DecimalFormat df = new DecimalFormat("0.00");
-    
+
     private void load_components() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
-        
+
         setExtendedState(MAXIMIZED_BOTH);
-        
+
         jTable1.getTableHeader().setFont(new Font("Open Sans SemiBold", 0, 14));
         model.JTableUtilities.setCellsAlignment(jTable1, (int) LEFT_ALIGNMENT);
-        
+
         JTableHeader header = jTable1.getTableHeader();
         header.setPreferredSize(new Dimension(100, HEADER_HEIGHT));
-        
+
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(JLabel.LEFT);
-        
+
         jLabel9.setBorder(new MatteBorder(0, 0, 1, 0, Color.lightGray));
-        
+
         jButton5.setVerticalTextPosition(JButton.BOTTOM);
         jButton5.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton4.setVerticalTextPosition(JButton.BOTTOM);
         jButton4.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton6.setVerticalTextPosition(JButton.BOTTOM);
         jButton6.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton7.setVerticalTextPosition(JButton.BOTTOM);
         jButton7.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton8.setVerticalTextPosition(JButton.BOTTOM);
         jButton8.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton9.setVerticalTextPosition(JButton.BOTTOM);
         jButton9.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton10.setVerticalTextPosition(JButton.BOTTOM);
         jButton10.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton13.setVerticalTextPosition(JButton.BOTTOM);
         jButton13.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton14.setVerticalTextPosition(JButton.BOTTOM);
         jButton14.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton15.setVerticalTextPosition(JButton.BOTTOM);
         jButton15.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton16.setVerticalTextPosition(JButton.BOTTOM);
         jButton16.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton17.setVerticalTextPosition(JButton.BOTTOM);
         jButton17.setHorizontalTextPosition(JButton.CENTER);
-        
+
         jButton11.setVerticalTextPosition(JButton.BOTTOM);
         jButton11.setHorizontalTextPosition(JButton.CENTER);
-        
+
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/ico.png")));
     }
-    
+
     private void button_disable() {
         try {
             ResultSet rs = MySQL.search("SELECT * FROM `user` WHERE `id` = '" + userId + "'");
             rs.next();
-            
+
             String v = rs.getString("user_type_id");
-            
+
             if (v.equals("1")) {
                 jButton11.setEnabled(true);
             } else if (v.equals("2")) {
@@ -147,9 +147,9 @@ public class Home extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
-    
+
     private void load_status() {
         switch (search_state) {
             case 1:
@@ -169,9 +169,9 @@ public class Home extends javax.swing.JFrame {
                 }
         }
     }
-    
+
     public void payment() {
-        
+
         if (jTable1.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Please add products", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (payment_type.equals("Select")) {
@@ -184,12 +184,12 @@ public class Home extends javax.swing.JFrame {
             long mTime = System.currentTimeMillis();
             String unique_id = mTime + "-" + userId;
             String cid = jLabel3.getText();
-            
+
             SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd");
             String dNow = sdf2.format(new Date());
             String dnow2 = sdf3.format(new Date());
-            
+
             MySQL.iud("INSERT INTO `invoice`(`customer_id`,`date_time`,`user_id`,`unique_id`) VALUES ('1','" + dNow + "','" + userId + "','" + unique_id + "')");
             //Invoive_insert
 
@@ -199,7 +199,7 @@ public class Home extends javax.swing.JFrame {
                 ResultSet rs = MySQL.search("SELECT * FROM `invoice` WHERE `unique_id`='" + unique_id + "'");
                 rs.next();
                 String id = rs.getString("id");
-                
+
                 MySQL.iud("INSERT INTO `invoice_payment` (`invoice_id`,`payment_type_id`,`payment`,`balance`) VALUES ('" + id + "','" + pay_id + "','" + payment + "','" + balance + "')");
                 //Invoice_payment_insert
 
@@ -215,65 +215,65 @@ public class Home extends javax.swing.JFrame {
                     exd.get(i);
                     selling_price.get(i);
                     discount.get(i);
-                    
+
                     ResultSet rs3 = MySQL.search("SELECT * FROM `stock` WHERE `stock`.`id`='" + sid + "'");
                     rs3.next();
-                    
+
                     String availableQty = rs3.getString("quantity");
-                    
+
                     int updatedQty = Integer.parseInt(availableQty) - qty;
-                    
+
                     MySQL.iud("UPDATE `stock` SET `quantity`='" + updatedQty + "' WHERE `id`='" + sid + "'");
-                    
+
                     MySQL.iud("INSERT INTO `invoice_item`(`qty`,`invoice_id`,`stock_id`,`discount`) VALUES('" + qty + "','" + id + "','" + sid + "','" + discount.get(i) + "')");
 
 //                    MySQL.iud("UPDATE `grn_item` SET `quantity` = '" + qty + "' WHERE `stock_id` = '" + sid + "'");
                 }
-                
+
                 count += 1;
-                
+
                 int jb = count;
-                
+
                 jButton16.setText(String.valueOf(jb));
-                
+
                 InputStream filePath = getClass().getResourceAsStream("/reports/invoice_generate.jrxml");
                 JasperReport jr = JasperCompileManager.compileReport(filePath);
-                
+
                 HashMap parameters = new HashMap();
-                
+
                 parameters.put("Parameter1", jLabel6.getText());
                 parameters.put("Parameter2", jLabel7.getText());
                 parameters.put("Parameter3", jLabel8.getText());
                 parameters.put("Parameter4", unique_id);
                 parameters.put("Parameter5", dnow2);
-                
+
                 DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
                 JRTableModelDataSource dataSource = new JRTableModelDataSource(dtm);
-                
+
                 JasperPrint jp = JasperFillManager.fillReport(jr, parameters, dataSource);
                 JasperViewer.viewReport(jp, false);
-                
+
                 pay_id = 0;
-                
+
                 jButton8.setBackground(new Color(203, 229, 255));
                 jButton9.setBackground(new Color(203, 229, 255));
                 jButton10.setBackground(new Color(203, 229, 255));
-                
+
                 jLabel6.setText("0.00");
                 jLabel7.setText("0.00");
                 jLabel8.setText("0.00");
-                
+
                 JOptionPane.showMessageDialog(this, "New Invoice created", "Success", JOptionPane.INFORMATION_MESSAGE);
-                
+
                 dtm.setRowCount(0);
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
+
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -407,11 +407,6 @@ public class Home extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField1FocusLost(evt);
-            }
-        });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -764,10 +759,6 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         if (jTextField1.getText().equals("Search product by name")) {
             jTextField1.setText("");
@@ -782,41 +773,41 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        
+
         load_status();
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int r = jTable1.getSelectedRow();
-        
+
         if (r == -1) {
             JOptionPane.showMessageDialog(this, "Please select a product", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            
+
             double min_sub = Double.parseDouble(model.getValueAt(r, 3).toString());
             double home_sub = Double.parseDouble(jLabel6.getText());
-            
+
             double selling_p = Double.parseDouble(selling_price.get(r).toString());
             double arry_dis = Double.parseDouble(discount.get(r).toString());
-            
+
             double min_dis = selling_p / 100 * arry_dis;
-            
+
             double home_dis = Double.parseDouble(jLabel7.getText());
-            
+
             double home_tot = Double.parseDouble(jLabel8.getText());
             double min_tot = min_sub - min_dis;
-            
+
             double out_sub = home_sub - min_sub;
             double out_dis = home_dis - min_dis;
             double out_tot = home_tot - min_tot;
-            
+
             jLabel6.setText(df.format(out_sub));
             jLabel7.setText(df.format(out_dis));
             jLabel8.setText(df.format(out_tot));
-            
+
             model.removeRow(r);
-            
+
             product_id.remove(r);
             stock_id.remove(r);
             product_name.remove(r);
@@ -827,25 +818,25 @@ public class Home extends javax.swing.JFrame {
             exd.remove(r);
             selling_price.remove(r);
             discount.remove(r);
-            
+
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         int r = jTable1.getSelectedRow();
-        
+
         if (r == -1) {
             JOptionPane.showMessageDialog(this, "Please select a item first", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             Discount_add da = new Discount_add(this, true);
             da.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         userId = 0;
-        
+
         System_login sl = new System_login();
         sl.setVisible(true);
         this.dispose();
@@ -869,84 +860,85 @@ public class Home extends javax.swing.JFrame {
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String search = jTextField1.getText().trim();
         if (search_state == 1) {
-            
+
             if (!search.equals("")) {
-                
+
                 try {
                     ResultSet rs = MySQL.search("SELECT * FROM `product` WHERE `name` LIKE '%" + search + "%' ");
-                    
+
                     DefaultListModel ls = new DefaultListModel();
                     while (rs.next()) {
                         ls.addElement(rs.getString("name"));
-                        
+
                     }
-                    
+
+                    list.setFixedCellHeight(28);
                     list.setModel(ls);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+
                 jPopupMenu1.show(jTextField1, 0, jTextField1.getHeight());
-                
+
             }
         } else if (search_state == 3) {
-            
+
             if (!search.equals("")) {
-                
+
                 try {
                     ResultSet rs = MySQL.search("SELECT * FROM `product` WHERE `id` LIKE '%" + search + "%' ");
-                    
+
                     DefaultListModel ls = new DefaultListModel();
                     while (rs.next()) {
                         ls.addElement(rs.getString("name"));
                     }
-                    
+
                     list.setModel(ls);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+
                 jPopupMenu1.show(jTextField1, 0, jTextField1.getHeight());
-                
+
             }
-            
+
         } else if (search_state == 2) {
             if (!search.equals("")) {
-                
+
                 try {
                     ResultSet rs = MySQL.search("SELECT * FROM `product` WHERE `barcode` LIKE '%" + search + "%' ");
-                    
+
                     DefaultListModel ls = new DefaultListModel();
                     while (rs.next()) {
                         ls.addElement(rs.getString("name"));
                     }
-                    
+
                     list.setModel(ls);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+
                 jPopupMenu1.show(jTextField1, 0, jTextField1.getHeight());
-                
+
             }
         }
-        
+
 
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
         String selected_item = list.getSelectedValue();
-        
+
         if (evt.getClickCount() == 2) {
             try {
                 ResultSet add_item = MySQL.search("SELECT * FROM `product` WHERE `name` = '" + selected_item + "'");
                 add_item.next();
-                
+
                 product_set_id = add_item.getString("id");
-                
+
                 Item_stock_selector iss = new Item_stock_selector(this, true);
                 iss.setVisible(true);
-                
+
             } catch (Exception e) {
             }
         }
@@ -960,17 +952,17 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+
         if (evt.getClickCount() == 1) {
             productrow = jTable1.getSelectedRow();
-            
+
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
+
         int r = jTable1.getSelectedRow();
-        
+
         if (r == -1) {
             JOptionPane.showMessageDialog(this, "Please select a item first", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -1025,14 +1017,14 @@ public class Home extends javax.swing.JFrame {
         exd.removeAllElements();
         selling_price.removeAllElements();
         discount.removeAllElements();
-        
+
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
-        
+
         jLabel6.setText("0.00");
         jLabel7.setText("0.00");
         jLabel8.setText("0.00");
-        
+
         jTextField1.setText("");
     }//GEN-LAST:event_jButton17ActionPerformed
 
@@ -1047,20 +1039,20 @@ public class Home extends javax.swing.JFrame {
         exd.removeAllElements();
         selling_price.removeAllElements();
         discount.removeAllElements();
-        
+
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
-        
+
         jTextField1.setText("");
-        
+
         jButton16.setText("Count");
-        
+
         pay_id = 0;
-        
+
         jButton8.setBackground(new Color(203, 229, 255));
         jButton9.setBackground(new Color(203, 229, 255));
         jButton10.setBackground(new Color(203, 229, 255));
-        
+
         jLabel6.setText("0.00");
         jLabel7.setText("0.00");
         jLabel8.setText("0.00");
