@@ -3,12 +3,12 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>C:\Users\thari\Documents\NetBeansProjects\VIVA_POS\dist\VIVA_POS.jar</jar>
-  <outfile>C:\Users\thari\Documents\NetBeansProjects\VIVA_POS\dist\Neo_Mart.exe</outfile>
-  <errTitle>Please install JRE to run this application</errTitle>
+  <outfile>C:\Users\thari\Documents\NetBeansProjects\VIVA_POS\dist\Neo_mart.exe</outfile>
+  <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
-  <downloadUrl>https://www.java.com/en/download/manual.jsp</downloadUrl>
+  <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
@@ -26,14 +26,14 @@
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
     <txtFileVersion>1.0.0.0</txtFileVersion>
-    <fileDescription>Custom POS System</fileDescription>
-    <copyright>@Neox</copyright>
+    <fileDescription>Neox Pos  System</fileDescription>
+    <copyright>@neox</copyright>
     <productVersion>1.0.0.0</productVersion>
-    <txtProductVersion>1.0.F1</txtProductVersion>
-    <productName>Neo Mart </productName>
-    <companyName>Neox Systems</companyName>
-    <internalName>Neo Mart</internalName>
-    <originalFilename>Neo_Mart.exe</originalFilename>
+    <txtProductVersion>1.0.FV</txtProductVersion>
+    <productName>Neox_mart</productName>
+    <companyName>Neox</companyName>
+    <internalName>Neox_mart</internalName>
+    <originalFilename>Neox_mart.exe</originalFilename>
     <trademarks></trademarks>
     <language>ENGLISH_US</language>
   </versionInfo>

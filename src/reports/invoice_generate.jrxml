@@ -10,7 +10,7 @@
 		<![CDATA[]]>
 	</queryString>
 	<field name="Product Name" class="java.lang.String"/>
-	<field name="Quantity" class="java.lang.String"/>
+	<field name="Quantity" class="java.lang.Integer"/>
 	<field name="Price" class="java.lang.String"/>
 	<field name="Amount" class="java.lang.String"/>
 	<background>
