@@ -24,14 +24,17 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.brand: ~2 rows (approximately)
+-- Dumping data for table neox_pos.brand: ~5 rows (approximately)
 DELETE FROM `brand`;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
 INSERT INTO `brand` (`id`, `name`) VALUES
 	(1, 'CBL'),
-	(2, 'Ritsburry');
+	(2, 'Ritsburry'),
+	(3, 'Nestle'),
+	(4, 'Kandos'),
+	(5, 'Maggi');
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.category
@@ -40,14 +43,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.category: ~2 rows (approximately)
+-- Dumping data for table neox_pos.category: ~5 rows (approximately)
 DELETE FROM `category`;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` (`id`, `name`) VALUES
 	(1, 'Biscuits'),
-	(2, 'Chocolate');
+	(2, 'Chocolate'),
+	(3, 'Corn Flakes'),
+	(4, 'Ice Cream'),
+	(5, 'Noodles');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.city
@@ -56,13 +62,19 @@ CREATE TABLE IF NOT EXISTS `city` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.city: ~0 rows (approximately)
+-- Dumping data for table neox_pos.city: ~7 rows (approximately)
 DELETE FROM `city`;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` (`id`, `name`) VALUES
-	(1, 'Kandy');
+	(1, 'Kandy'),
+	(2, 'Colombo'),
+	(3, 'Gampaha'),
+	(4, 'Nuwara Eliya '),
+	(5, 'Galle'),
+	(6, 'Dambulla'),
+	(7, 'Kegalle');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.company
@@ -73,14 +85,18 @@ CREATE TABLE IF NOT EXISTS `company` (
   `contact_number` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `contact_number_UNIQUE` (`contact_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.company: ~1 rows (approximately)
+-- Dumping data for table neox_pos.company: ~6 rows (approximately)
 DELETE FROM `company`;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
 INSERT INTO `company` (`id`, `name`, `contact_number`) VALUES
 	(1, 'Ritsburry', '0767036495'),
-	(2, 'CBL', '0768498448');
+	(2, 'CBL', '0768498448'),
+	(3, 'Prima', '0767809489'),
+	(4, 'Kandos', '0787984984'),
+	(5, 'Munchi', '0723478899'),
+	(6, 'Dominos', '0789545454');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.company_branch
@@ -96,13 +112,16 @@ CREATE TABLE IF NOT EXISTS `company_branch` (
   KEY `fk_company_branch_company1_idx` (`company_id`),
   CONSTRAINT `fk_company_branch_company1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`),
   CONSTRAINT `fk_company_branch_company_branch_address1` FOREIGN KEY (`company_branch_address_id`) REFERENCES `company_branch_address` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.company_branch: ~0 rows (approximately)
+-- Dumping data for table neox_pos.company_branch: ~4 rows (approximately)
 DELETE FROM `company_branch`;
 /*!40000 ALTER TABLE `company_branch` DISABLE KEYS */;
 INSERT INTO `company_branch` (`id`, `branch_contact_number`, `name`, `company_branch_address_id`, `company_id`) VALUES
-	(1, '0812300885', 'Koswatta', 1, 1);
+	(1, '0812300885', 'Koswatta', 1, 1),
+	(2, '0812300885', 'Palawatta', 2, 1),
+	(3, '0818948944', 'Batalanda', 3, 4),
+	(4, '0812300885', 'Kandy', 4, 3);
 /*!40000 ALTER TABLE `company_branch` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.company_branch_address
@@ -115,33 +134,17 @@ CREATE TABLE IF NOT EXISTS `company_branch_address` (
   PRIMARY KEY (`id`),
   KEY `fk_company_branch_address_city1_idx` (`city_id`),
   CONSTRAINT `fk_company_branch_address_city1` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.company_branch_address: ~0 rows (approximately)
+-- Dumping data for table neox_pos.company_branch_address: ~4 rows (approximately)
 DELETE FROM `company_branch_address`;
 /*!40000 ALTER TABLE `company_branch_address` DISABLE KEYS */;
 INSERT INTO `company_branch_address` (`id`, `line1`, `line2`, `city_id`) VALUES
-	(1, 'No 79, Hapugoda', ',Ambatenna', 1);
+	(1, 'No 79, Hapugoda', 'Ambatenna', 1),
+	(2, 'No  57/2, AB Road', 'Palawatta', 1),
+	(3, 'No 25/2,B Road', 'Batalanda', 1),
+	(4, 'No 27 , Peredeniya Road', 'Kandy', 1);
 /*!40000 ALTER TABLE `company_branch_address` ENABLE KEYS */;
-
--- Dumping structure for table neox_pos.customer
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `contact_number` varchar(45) DEFAULT NULL,
-  `city_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_customer_city1_idx` (`city_id`),
-  CONSTRAINT `fk_customer_city1` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
-
--- Dumping data for table neox_pos.customer: ~0 rows (approximately)
-DELETE FROM `customer`;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` (`id`, `name`, `contact_number`, `city_id`) VALUES
-	(1, 'sd', '3123123', 1);
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.grn
 DROP TABLE IF EXISTS `grn`;
@@ -156,9 +159,9 @@ CREATE TABLE IF NOT EXISTS `grn` (
   KEY `fk_grn_user1_idx` (`user_id`),
   CONSTRAINT `fk_grn_supplier1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`),
   CONSTRAINT `fk_grn_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.grn: ~6 rows (approximately)
+-- Dumping data for table neox_pos.grn: ~11 rows (approximately)
 DELETE FROM `grn`;
 /*!40000 ALTER TABLE `grn` DISABLE KEYS */;
 INSERT INTO `grn` (`id`, `supplier_id`, `date_time`, `user_id`, `unique_id`) VALUES
@@ -168,7 +171,11 @@ INSERT INTO `grn` (`id`, `supplier_id`, `date_time`, `user_id`, `unique_id`) VAL
 	(5, 1, '2022-07-20 02:25:47', 1, '1658264147895-1'),
 	(7, 1, '2022-07-20 05:07:49', 1, '1658273869613-1'),
 	(8, 2, '2022-07-20 05:10:08', 1, '1658274008866-1'),
-	(9, 1, '2022-07-20 08:31:57', 1, '1658286117477-1');
+	(9, 1, '2022-07-20 08:31:57', 1, '1658286117477-1'),
+	(10, 4, '2022-07-27 17:15:46', 1, '1658922346571-1'),
+	(11, 2, '2022-07-27 23:19:26', 1, '1658944166101-1'),
+	(12, 1, '2022-07-28 09:01:04', 1, '1658979064786-1'),
+	(13, 2, '2022-07-28 09:07:58', 1, '1658979478821-1');
 /*!40000 ALTER TABLE `grn` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.grn_item
@@ -184,9 +191,9 @@ CREATE TABLE IF NOT EXISTS `grn_item` (
   KEY `fk_grn_item_stock1_idx` (`stock_id`),
   CONSTRAINT `fk_grn_item_grn1` FOREIGN KEY (`grn_id`) REFERENCES `grn` (`id`),
   CONSTRAINT `fk_grn_item_stock1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.grn_item: ~6 rows (approximately)
+-- Dumping data for table neox_pos.grn_item: ~11 rows (approximately)
 DELETE FROM `grn_item`;
 /*!40000 ALTER TABLE `grn_item` DISABLE KEYS */;
 INSERT INTO `grn_item` (`id`, `quantity`, `buying_price`, `grn_id`, `stock_id`) VALUES
@@ -196,7 +203,11 @@ INSERT INTO `grn_item` (`id`, `quantity`, `buying_price`, `grn_id`, `stock_id`) 
 	(4, 10, 150, 5, 5),
 	(5, 12, 150, 7, 6),
 	(6, 12, 150, 8, 7),
-	(7, 10, 100, 9, 8);
+	(7, 10, 100, 9, 8),
+	(8, 15, 150, 10, 9),
+	(9, 15, 150, 11, 10),
+	(10, 10, 200, 12, 11),
+	(11, 5, 150, 13, 12);
 /*!40000 ALTER TABLE `grn_item` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.grn_payment
@@ -212,9 +223,9 @@ CREATE TABLE IF NOT EXISTS `grn_payment` (
   KEY `fk_grn_payment_grn1_idx` (`grn_id`),
   CONSTRAINT `fk_grn_payment_grn1` FOREIGN KEY (`grn_id`) REFERENCES `grn` (`id`),
   CONSTRAINT `fk_grn_payment_payment_type1` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.grn_payment: ~6 rows (approximately)
+-- Dumping data for table neox_pos.grn_payment: ~11 rows (approximately)
 DELETE FROM `grn_payment`;
 /*!40000 ALTER TABLE `grn_payment` DISABLE KEYS */;
 INSERT INTO `grn_payment` (`id`, `grn_id`, `payment_type_id`, `payment`, `balance`) VALUES
@@ -224,72 +235,84 @@ INSERT INTO `grn_payment` (`id`, `grn_id`, `payment_type_id`, `payment`, `balanc
 	(4, 5, 1, 1500, 0),
 	(5, 7, 1, 1800, 0),
 	(6, 8, 2, 1800, 0),
-	(7, 9, 1, 1000, 0);
+	(7, 9, 1, 1000, 0),
+	(8, 10, 1, 2250, 0),
+	(9, 11, 1, 2250, 0),
+	(10, 12, 1, 2000, 0),
+	(11, 13, 1, 750, 0);
 /*!40000 ALTER TABLE `grn_payment` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.invoice
 DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE IF NOT EXISTS `invoice` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `customer_id` int DEFAULT NULL,
   `date_time` datetime DEFAULT NULL,
   `user_id` int NOT NULL,
   `unique_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_invoice_customer1_idx` (`customer_id`),
   KEY `fk_invoice_user1_idx` (`user_id`),
-  CONSTRAINT `fk_invoice_customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   CONSTRAINT `fk_invoice_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.invoice: ~44 rows (approximately)
+-- Dumping data for table neox_pos.invoice: ~46 rows (approximately)
 DELETE FROM `invoice`;
 /*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
-INSERT INTO `invoice` (`id`, `customer_id`, `date_time`, `user_id`, `unique_id`) VALUES
-	(1, 1, '2022-07-22 03:24:20', 1, NULL),
-	(2, 1, '2022-07-22 03:25:33', 1, '1658440533039-1'),
-	(3, 1, '2022-07-22 03:28:29', 1, '1658440709759-1'),
-	(4, 1, '2022-07-22 03:30:26', 1, '1658440826135-1'),
-	(5, 1, '2022-07-22 03:32:04', 1, '1658440924966-1'),
-	(6, 1, '2022-07-22 03:34:26', 1, '1658441066823-1'),
-	(7, 1, '2022-07-22 03:34:27', 1, '1658441067127-1'),
-	(8, 1, '2022-07-22 03:34:27', 1, '1658441067335-1'),
-	(9, 1, '2022-07-22 03:35:32', 1, '1658441132607-1'),
-	(10, 1, '2022-07-22 06:03:38', 1, '1658450018949-1'),
-	(11, 1, '2022-07-22 23:36:39', 1, '1658513199867-1'),
-	(12, 1, '2022-07-23 01:19:43', 1, '1658519383597-1'),
-	(13, 1, '2022-07-23 01:20:20', 1, '1658519420076-1'),
-	(14, 1, '2022-07-23 01:22:34', 1, '1658519554817-1'),
-	(15, 1, '2022-07-23 01:24:33', 1, '1658519673502-1'),
-	(16, 1, '2022-07-24 00:58:37', 1, '1658604517449-1'),
-	(17, 1, '2022-07-24 00:59:50', 1, '1658604590067-1'),
-	(18, 1, '2022-07-24 01:02:46', 1, '1658604766095-1'),
-	(20, 1, '2022-07-24 01:04:56', 1, '1658604896770-1'),
-	(21, 1, '2022-07-24 01:06:06', 1, '1658604966107-1'),
-	(22, 1, '2022-07-24 01:09:31', 1, '1658605171849-1'),
-	(23, 1, '2022-07-24 01:10:24', 1, '1658605224179-1'),
-	(24, 1, '2022-07-24 01:18:47', 1, '1658605727640-1'),
-	(25, 1, '2022-07-24 01:28:59', 1, '1658606339863-1'),
-	(26, 1, '2022-07-24 01:30:02', 1, '1658606402672-1'),
-	(28, 1, '2022-07-24 02:27:09', 1, '1658609829118-1'),
-	(30, 1, '2022-07-24 02:31:53', 1, '1658610113527-1'),
-	(32, 1, '2022-07-24 02:36:51', 1, '1658610411423-1'),
-	(33, 1, '2022-07-24 02:37:08', 1, '1658610428079-1'),
-	(34, 1, '2022-07-25 00:55:06', 1, '1658690706189-1'),
-	(35, 1, '2022-07-25 01:04:10', 1, '1658691250429-1'),
-	(36, 1, '2022-07-25 01:06:07', 1, '1658691367894-1'),
-	(37, 1, '2022-07-25 01:16:30', 1, '1658691990198-1'),
-	(38, 1, '2022-07-25 01:19:59', 1, '1658692199942-1'),
-	(39, 1, '2022-07-25 01:20:58', 1, '1658692258046-1'),
-	(40, 1, '2022-07-25 01:33:51', 1, '1658693031727-1'),
-	(41, 1, '2022-07-25 07:19:23', 1, '1658713763274-1'),
-	(42, 1, '2022-07-25 07:23:10', 1, '1658713990987-1'),
-	(43, 1, '2022-07-25 07:32:14', 1, '1658714534930-1'),
-	(44, 1, '2022-07-25 07:33:38', 1, '1658714618907-1'),
-	(45, 1, '2022-07-26 00:34:37', 1, '1658775877611-1'),
-	(46, 1, '2022-07-26 00:35:41', 1, '1658775941836-1'),
-	(47, 1, '2022-07-26 00:40:58', 1, '1658776258340-1'),
-	(48, 1, '2022-07-26 00:49:29', 1, '1658776769005-1');
+INSERT INTO `invoice` (`id`, `date_time`, `user_id`, `unique_id`) VALUES
+	(1, '2022-07-22 03:24:20', 1, NULL),
+	(2, '2022-07-22 03:25:33', 1, '1658440533039-1'),
+	(3, '2022-07-22 03:28:29', 1, '1658440709759-1'),
+	(4, '2022-07-22 03:30:26', 1, '1658440826135-1'),
+	(5, '2022-07-22 03:32:04', 1, '1658440924966-1'),
+	(6, '2022-07-22 03:34:26', 1, '1658441066823-1'),
+	(7, '2022-07-22 03:34:27', 1, '1658441067127-1'),
+	(8, '2022-07-22 03:34:27', 1, '1658441067335-1'),
+	(9, '2022-07-22 03:35:32', 1, '1658441132607-1'),
+	(10, '2022-07-22 06:03:38', 1, '1658450018949-1'),
+	(11, '2022-07-22 23:36:39', 1, '1658513199867-1'),
+	(12, '2022-07-23 01:19:43', 1, '1658519383597-1'),
+	(13, '2022-07-23 01:20:20', 1, '1658519420076-1'),
+	(14, '2022-07-23 01:22:34', 1, '1658519554817-1'),
+	(15, '2022-07-23 01:24:33', 1, '1658519673502-1'),
+	(16, '2022-07-24 00:58:37', 1, '1658604517449-1'),
+	(17, '2022-07-24 00:59:50', 1, '1658604590067-1'),
+	(18, '2022-07-24 01:02:46', 1, '1658604766095-1'),
+	(20, '2022-07-24 01:04:56', 1, '1658604896770-1'),
+	(21, '2022-07-24 01:06:06', 1, '1658604966107-1'),
+	(22, '2022-07-24 01:09:31', 1, '1658605171849-1'),
+	(23, '2022-07-24 01:10:24', 1, '1658605224179-1'),
+	(24, '2022-07-24 01:18:47', 1, '1658605727640-1'),
+	(25, '2022-07-24 01:28:59', 1, '1658606339863-1'),
+	(26, '2022-07-24 01:30:02', 1, '1658606402672-1'),
+	(28, '2022-07-24 02:27:09', 1, '1658609829118-1'),
+	(30, '2022-07-24 02:31:53', 1, '1658610113527-1'),
+	(32, '2022-07-24 02:36:51', 1, '1658610411423-1'),
+	(33, '2022-07-24 02:37:08', 1, '1658610428079-1'),
+	(34, '2022-07-25 00:55:06', 1, '1658690706189-1'),
+	(35, '2022-07-25 01:04:10', 1, '1658691250429-1'),
+	(36, '2022-07-25 01:06:07', 1, '1658691367894-1'),
+	(37, '2022-07-25 01:16:30', 1, '1658691990198-1'),
+	(38, '2022-07-25 01:19:59', 1, '1658692199942-1'),
+	(39, '2022-07-25 01:20:58', 1, '1658692258046-1'),
+	(40, '2022-07-25 01:33:51', 1, '1658693031727-1'),
+	(41, '2022-07-25 07:19:23', 1, '1658713763274-1'),
+	(42, '2022-07-25 07:23:10', 1, '1658713990987-1'),
+	(43, '2022-07-25 07:32:14', 1, '1658714534930-1'),
+	(44, '2022-07-25 07:33:38', 1, '1658714618907-1'),
+	(45, '2022-07-26 00:34:37', 1, '1658775877611-1'),
+	(46, '2022-07-26 00:35:41', 1, '1658775941836-1'),
+	(47, '2022-07-26 00:40:58', 1, '1658776258340-1'),
+	(48, '2022-07-26 00:49:29', 1, '1658776769005-1'),
+	(49, '2022-07-27 16:39:50', 1, '1658920190177-1'),
+	(50, '2022-07-27 23:14:12', 1, '1658943852914-1'),
+	(51, '2022-07-28 00:24:36', 1, '1658948076757-1'),
+	(52, '2022-07-28 00:26:47', 1, '1658948207926-1'),
+	(53, '2022-07-28 00:30:00', 1, '1658948400782-1'),
+	(54, '2022-07-28 06:59:16', 1, '1658971756736-1'),
+	(55, '2022-07-28 08:51:14', 1, '1658978474987-1'),
+	(56, '2022-07-28 08:51:44', 1, '1658978504722-1'),
+	(57, '2022-07-28 08:52:24', 1, '1658978544994-1'),
+	(58, '2022-07-28 21:08:52', 1, '1659022732877-1'),
+	(59, '2022-07-29 00:49:36', 1, '1659035976955-1');
 /*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.invoice_item
@@ -305,9 +328,9 @@ CREATE TABLE IF NOT EXISTS `invoice_item` (
   KEY `fk_invoice_item_stock1_idx` (`stock_id`),
   CONSTRAINT `fk_invoice_item_invoice1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`id`),
   CONSTRAINT `fk_invoice_item_stock1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.invoice_item: ~38 rows (approximately)
+-- Dumping data for table neox_pos.invoice_item: ~50 rows (approximately)
 DELETE FROM `invoice_item`;
 /*!40000 ALTER TABLE `invoice_item` DISABLE KEYS */;
 INSERT INTO `invoice_item` (`id`, `stock_id`, `qty`, `invoice_id`, `discount`) VALUES
@@ -348,7 +371,21 @@ INSERT INTO `invoice_item` (`id`, `stock_id`, `qty`, `invoice_id`, `discount`) V
 	(35, 7, 1, 45, 0),
 	(36, 7, 1, 46, 0),
 	(37, 3, 1, 47, 0),
-	(38, 6, 1, 48, 15);
+	(38, 6, 1, 48, 15),
+	(39, 5, 1, 49, 5),
+	(40, 3, 1, 50, 5),
+	(41, 6, 1, 50, 10),
+	(42, 4, 1, 50, 0),
+	(43, 3, 10, 51, 0),
+	(44, 5, 2, 52, 0),
+	(45, 5, 2, 53, 0),
+	(46, 6, 2, 54, 10),
+	(47, 8, 1, 55, 0),
+	(48, 7, 1, 55, 5),
+	(49, 4, 1, 56, 0),
+	(50, 4, 1, 57, 0),
+	(51, 6, 1, 58, 0),
+	(52, 8, 1, 59, 0);
 /*!40000 ALTER TABLE `invoice_item` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.invoice_payment
@@ -364,9 +401,9 @@ CREATE TABLE IF NOT EXISTS `invoice_payment` (
   KEY `fk_invoice_payment_payment_type1_idx` (`payment_type_id`) USING BTREE,
   CONSTRAINT `fk_invoice_payment_invoice1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`id`),
   CONSTRAINT `fk_invoice_payment_payment_type1` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.invoice_payment: ~42 rows (approximately)
+-- Dumping data for table neox_pos.invoice_payment: ~47 rows (approximately)
 DELETE FROM `invoice_payment`;
 /*!40000 ALTER TABLE `invoice_payment` DISABLE KEYS */;
 INSERT INTO `invoice_payment` (`id`, `payment`, `balance`, `invoice_id`, `payment_type_id`) VALUES
@@ -411,7 +448,18 @@ INSERT INTO `invoice_payment` (`id`, `payment`, `balance`, `invoice_id`, `paymen
 	(39, 200, 0, 45, 1),
 	(40, 200, 0, 46, 1),
 	(41, 150, 0, 47, 1),
-	(42, 238, 0, 48, 1);
+	(42, 238, 0, 48, 1),
+	(43, 190, 0, 49, 1),
+	(44, 594.5, 0, 50, 1),
+	(45, 1500, 0, 51, 1),
+	(46, 400, 0, 52, 1),
+	(47, 400, 0, 53, 1),
+	(48, 532, 0, 54, 1),
+	(49, 390, 0, 55, 1),
+	(50, 250, 0, 56, 1),
+	(51, 250, 0, 57, 1),
+	(52, 280, 0, 58, 1),
+	(53, 200, 0, 59, 1);
 /*!40000 ALTER TABLE `invoice_payment` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.payment_type
@@ -444,16 +492,18 @@ CREATE TABLE IF NOT EXISTS `product` (
   KEY `fk_product_brand1_idx` (`brand_id`),
   CONSTRAINT `fk_product_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`),
   CONSTRAINT `fk_product_category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.product: ~3 rows (approximately)
+-- Dumping data for table neox_pos.product: ~6 rows (approximately)
 DELETE FROM `product`;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`id`, `name`, `barcode`, `category_id`, `brand_id`) VALUES
-	(1, 'Hawain Cookies', '13645683', 1, 1),
-	(2, 'Cashew Nuts', '256887554', 2, 2),
-	(3, 'Milk Chocolate', '12312341', 2, 2),
-	(4, 'Maliban ', '151651', 1, 1);
+	(1, 'Hawain Cookies', '2179178167186', 1, 1),
+	(2, 'Cashew Nuts Chocolate', '1472975171971', 2, 2),
+	(3, 'Milk Chocolate Food Drink 180ml', '7978512164887', 2, 2),
+	(4, 'Nestle Cereal Koko Krunch 330g', '1516517855758', 1, 1),
+	(5, 'Burban Cookies Small 150g', '5892989589589', 1, 2),
+	(6, ' Biscuits Small 100g', '1658943904162', 1, 1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.refund
@@ -480,13 +530,15 @@ CREATE TABLE IF NOT EXISTS `refund` (
   CONSTRAINT `refund_type_id` FOREIGN KEY (`refund_type_id`) REFERENCES `refund_type` (`id`),
   CONSTRAINT `stock_id` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.refund: ~1 rows (approximately)
+-- Dumping data for table neox_pos.refund: ~3 rows (approximately)
 DELETE FROM `refund`;
 /*!40000 ALTER TABLE `refund` DISABLE KEYS */;
 INSERT INTO `refund` (`id`, `product_id`, `invoice_id`, `stock_id`, `user_id`, `refund_reason_id`, `refund_type_id`, `date`) VALUES
-	(1, 2, 36, 6, 1, 1, 3, '2022-07-25');
+	(1, 2, 36, 6, 1, 1, 2, '2022-07-25'),
+	(2, 1, 50, 4, 1, 1, 2, '2022-07-28'),
+	(3, 1, 39, 8, 1, 1, 2, '2022-07-28');
 /*!40000 ALTER TABLE `refund` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.refund_reason
@@ -536,20 +588,24 @@ CREATE TABLE IF NOT EXISTS `stock` (
   PRIMARY KEY (`id`),
   KEY `fk_stock_product1_idx` (`product_id`),
   CONSTRAINT `fk_stock_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.stock: ~8 rows (approximately)
+-- Dumping data for table neox_pos.stock: ~10 rows (approximately)
 DELETE FROM `stock`;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
 INSERT INTO `stock` (`id`, `product_id`, `quantity`, `selling_price`, `mfd`, `exd`) VALUES
 	(1, 1, 12, 1500, '2022-07-18', '2022-08-18'),
-	(2, 2, -1, 80, '2022-07-04', '2022-07-25'),
-	(3, 3, 6, 150, '2022-07-04', '2022-07-31'),
-	(4, 1, 14, 200, '2022-07-11', '2022-07-26'),
-	(5, 3, 8, 200, '2022-07-11', '2022-08-24'),
-	(6, 2, 1, 280, '2022-07-03', '2022-07-30'),
-	(7, 2, 0, 200, '2022-07-11', '2022-07-27'),
-	(8, 1, 9, 120, '2022-07-04', '2022-07-25');
+	(2, 2, 10, 120, '2022-07-04', '2022-07-25'),
+	(3, 3, 10, 150, '2022-07-04', '2022-07-31'),
+	(4, 1, 11, 250, '2022-07-11', '2022-07-26'),
+	(5, 3, 3, 200, '2022-07-11', '2022-08-24'),
+	(6, 2, 7, 280, '2022-07-03', '2022-07-30'),
+	(7, 2, 9, 200, '2022-07-11', '2022-07-27'),
+	(8, 1, 8, 200, '2022-07-04', '2022-07-25'),
+	(9, 4, 15, 160, '2022-07-21', '2022-07-30'),
+	(10, 5, 15, 200, '2022-07-10', '2022-07-31'),
+	(11, 1, 10, 250, '2022-07-01', '2022-07-31'),
+	(12, 1, 5, 200, '2022-07-03', '2022-07-30');
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.supplier
@@ -563,15 +619,18 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   PRIMARY KEY (`id`),
   KEY `fk_supplier_company_branch1_idx` (`company_branch_id`),
   CONSTRAINT `fk_supplier_company_branch1` FOREIGN KEY (`company_branch_id`) REFERENCES `company_branch` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.supplier: ~3 rows (approximately)
+-- Dumping data for table neox_pos.supplier: ~6 rows (approximately)
 DELETE FROM `supplier`;
 /*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
 INSERT INTO `supplier` (`id`, `name`, `contact_number`, `email`, `company_branch_id`) VALUES
 	(1, 'Kasun', '0712300885', 'kasun@gmail.con', 1),
 	(2, 'Ravis', '0724522115', 'rasuc@gmail.com', 1),
-	(3, 'Danuka', '0764894818', 'danuka@gmail.com', 1);
+	(3, 'Danuka', '0764894818', 'danuka@gmail.com', 1),
+	(4, 'Dharmakirthi', '0746494949', 'dharme@gmail.com', 1),
+	(5, 'Nemo', '0789789498', 'neo@gmail.com', 2),
+	(6, 'Dasun', '0768745454', 'dasun@gmail.com', 3);
 /*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.user
@@ -592,15 +651,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `fk_user_city1` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`),
   CONSTRAINT `fk_user_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`),
   CONSTRAINT `fk_user_user_type` FOREIGN KEY (`user_type_id`) REFERENCES `user_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table neox_pos.user: ~3 rows (approximately)
+-- Dumping data for table neox_pos.user: ~5 rows (approximately)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `contact_number`, `user_type_id`, `user_status_id`, `city_id`) VALUES
 	(1, 'Tharindu', 'wikum', 'wikum123', '0767036495', 1, 1, 1),
 	(2, 'Kasun', 'kasun1', 'kasun123', '0767989848', 2, 1, 1),
-	(3, 'Ravindu', 'ravi', 'ravindu123', '0767036495', 2, 2, 1);
+	(3, 'Ravindu', 'ravi', 'ravindu123', '0767036495', 2, 2, 1),
+	(4, 'Kaiz', 'kasu', 'kasun123', '0787946848', 1, 2, 1),
+	(5, 'Danu', 'danuka', 'danuka123', '0768745878', 2, 1, 1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- Dumping structure for table neox_pos.user_status
